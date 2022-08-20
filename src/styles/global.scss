@@ -1,0 +1,42 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    line-height: 28px;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    margin-left: auto;
+    margin-right: auto;
+    @media (max-width: 576px) {
+        max-width: 100%;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    @media (min-width: 576px) {
+        max-width: 540px;
+    }
+    @media (min-width: 768px) {
+        max-width: 720px;
+    }
+    @media (min-width: 992px) {
+        max-width: 960px;
+    }
+    @media (min-width: 1200px) {
+        max-width: 1140px;
+    }
+    @media (min-width: 1400px) {
+        max-width: 1320px;
+    }
+}

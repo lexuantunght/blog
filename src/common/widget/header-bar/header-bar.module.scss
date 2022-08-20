@@ -1,0 +1,56 @@
+.header {
+    height: 4rem;
+    display: grid;
+    grid-template-columns: 10rem auto auto;
+    align-items: center;
+    gap: 0 1rem;
+}
+.header > .brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary-color);
+}
+.menu {
+    display: flex;
+}
+.menubutton {
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+}
+.searchbox {
+    display: flex;
+    justify-content: flex-end;
+}
+.searchbutton {
+    margin-left: 0.5rem;
+}
+.toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .header {
+        grid-template-columns: 10rem auto;
+    }
+    .menu,
+    .searchbox {
+        display: none;
+    }
+    .toggle {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+@media (max-width: 992px) {
+    .searchinput {
+        width: 6rem;
+    }
+    .menubutton {
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+    }
+}

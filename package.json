@@ -1,24 +1,28 @@
 {
-  "name": "blog",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "12.2.5",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
-  },
-  "devDependencies": {
-    "@types/node": "18.7.8",
-    "@types/react": "17.0.2",
-    "@types/react-dom": "17.0.2",
-    "eslint": "8.22.0",
-    "eslint-config-next": "12.2.5",
-    "typescript": "4.7.4"
-  }
+    "name": "blog",
+    "version": "2022.8.20",
+    "private": true,
+    "scripts": {
+        "dev": "next dev -p 3001",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "next": "12.2.5",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "react-icons": "^4.4.0",
+        "react-transition-group": "^4.4.5",
+        "sass": "^1.54.5"
+    },
+    "devDependencies": {
+        "@types/node": "18.7.8",
+        "@types/react": "17.0.2",
+        "@types/react-dom": "17.0.2",
+        "@types/react-transition-group": "^4.4.5",
+        "eslint": "8.22.0",
+        "eslint-config-next": "12.2.5",
+        "typescript": "4.7.4"
+    }
 }

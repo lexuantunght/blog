@@ -1,0 +1,24 @@
+.textinput {
+    border-radius: var(--border-radius);
+    transition: var(--transition-time);
+    border: 1px solid var(--line-color);
+    padding: var(--pading-y) var(--padding-x);
+    &:focus {
+        outline: 0 none;
+        outline-offset: 0;
+        box-shadow: 0 0 0 0.2rem var(--primary-outline);
+        border-color: var(--primary-color);
+    }
+    &:not(.disabled):not(.invalid):hover {
+        border-color: var(--primary-color);
+    }
+}
+.textinput.disabled {
+    pointer-events: none;
+    user-select: none;
+    cursor: default;
+    opacity: 0.6;
+}
+.textinput.invalid {
+    border-color: var(--error-color);
+}
