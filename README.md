@@ -1,11 +1,11 @@
-# ShibaCoder - A website for me
+# Blog & Diary - A website for me
 
 # Tech
 
 -   ReactJS
--   Bootstrap
+-   NextJS
 
 # More info
 
 -   lexuantunght@gmail.com
--   This source code belongs to Xuan Tung
+-   This source code belongs to Le Xuan Tung
