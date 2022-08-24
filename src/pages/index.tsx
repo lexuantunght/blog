@@ -3,8 +3,14 @@ import Head from 'next/head';
 import PageLayout from '@common/layout';
 import TextInput from '@common/ui/TextInput';
 import Button from '@common/ui/Button';
+import PostItem from '@common/widget/post-item';
 
-const Home: NextPage = () => {
+type HomeProps = {
+    posts: [];
+};
+
+const Home: NextPage<HomeProps> = (props) => {
+    const { posts = [] } = props;
     return (
         <PageLayout>
             <Head>
@@ -29,10 +35,32 @@ const Home: NextPage = () => {
                 </div>
                 <div className="responsive">
                     <div className="home-title">Recent posts</div>
+                    <div className="home-recent-posts">
+                        {posts.map((post: any, idx) => (
+                            <PostItem
+                                key={idx}
+                                imageURL={post.imageURL}
+                                title={post.title}
+                                tag="Life"
+                                view={0}
+                                created_at={new Date()}
+                            />
+                        ))}
+                    </div>
                 </div>
             </>
         </PageLayout>
     );
 };
+
+export async function getServerSideProps() {
+    const res = await fetch('http://localhost:3001/api/post');
+    const posts = await res.json();
+    return {
+        props: {
+            posts,
+        },
+    };
+}
 
 export default Home;

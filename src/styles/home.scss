@@ -6,18 +6,19 @@
 .home-banner {
     display: flex;
     flex-direction: column;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    color: var(--white-text);
     .home-banner-title {
         font-weight: 500;
         font-size: 1.1rem;
         text-transform: uppercase;
-        color: var(--primary-color);
+        color: #f59e0b;
         user-select: none;
     }
     .home-banner-slogan {
         font-size: 2.5rem;
-        font-weight: 600;
+        font-weight: 700;
         margin: 1.5rem 0;
         line-height: 2.75rem;
         user-select: none;
@@ -25,6 +26,10 @@
             display: flex;
             flex-direction: column;
         }
+    }
+    @media (max-width: 768px) {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
     }
 }
 .home-subscribe {
@@ -35,8 +40,23 @@
     }
 }
 .home-title {
-    margin: 1rem 0;
-    font-size: 1.1rem;
-    font-weight: 500;
+    margin: 1.5rem 0 1rem 0;
+    font-size: 1.2rem;
+    font-weight: 700;
     color: var(--black-text);
+    user-select: none;
+}
+.home-recent-posts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+    @media (max-width: 992px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (max-width: 576px) {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
 }
