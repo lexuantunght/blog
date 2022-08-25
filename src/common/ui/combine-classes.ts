@@ -1,6 +1,6 @@
 type ItemClass = [condition?: boolean, className?: string];
 
-const makeClassName = (...items: Array<ItemClass>) => {
+const combineClasses = (...items: Array<ItemClass>) => {
     let result = '';
     items.forEach((item) => {
         if (item[0] && item[1]) {
@@ -10,4 +10,4 @@ const makeClassName = (...items: Array<ItemClass>) => {
     return result;
 };
 
-export default makeClassName;
+export default combineClasses;

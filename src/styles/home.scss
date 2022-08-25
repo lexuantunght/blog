@@ -40,7 +40,7 @@
     }
 }
 .home-title {
-    margin: 1.5rem 0 1rem 0;
+    margin: 1.5rem 0;
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--black-text);
@@ -59,4 +59,9 @@
     @media (max-width: 576px) {
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
+}
+.home-recent-posts-pagination {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
 }

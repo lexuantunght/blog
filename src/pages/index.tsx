@@ -4,13 +4,14 @@ import PageLayout from '@common/layout';
 import TextInput from '@common/ui/TextInput';
 import Button from '@common/ui/Button';
 import PostItem from '@common/widget/post-item';
+import Pagination from '@common/ui/Pagination';
 
 type HomeProps = {
-    posts: [];
+    data: { posts: []; totalPages: number };
 };
 
 const Home: NextPage<HomeProps> = (props) => {
-    const { posts = [] } = props;
+    const { posts = [], totalPages } = props.data;
     return (
         <PageLayout>
             <Head>
@@ -36,16 +37,20 @@ const Home: NextPage<HomeProps> = (props) => {
                 <div className="responsive">
                     <div className="home-title">Recent posts</div>
                     <div className="home-recent-posts">
-                        {posts.map((post: any, idx) => (
+                        {posts.map((post: any) => (
                             <PostItem
-                                key={idx}
-                                imageURL={post.imageURL}
+                                _id={post._id}
+                                key={post._id}
+                                imageURL={post.photos[0].url}
                                 title={post.title}
-                                tag="Life"
-                                view={0}
-                                created_at={new Date()}
+                                category={post.category}
+                                views={post.views}
+                                created_at={post.created_at}
                             />
                         ))}
+                    </div>
+                    <div className="home-recent-posts-pagination">
+                        <Pagination pageCount={totalPages} page={0} />
                     </div>
                 </div>
             </>
@@ -54,11 +59,13 @@ const Home: NextPage<HomeProps> = (props) => {
 };
 
 export async function getServerSideProps() {
-    const res = await fetch('http://localhost:3001/api/post');
-    const posts = await res.json();
+    const res = await fetch('https://shibala-api.herokuapp.com/post/getAll/8/0').then((res) =>
+        res.json()
+    );
+    const data = await res.data;
     return {
         props: {
-            posts,
+            data,
         },
     };
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import makeClassName from '../make-class';
+import combineClasses from '../combine-classes';
 import styles from './text-input.module.scss';
 
 export interface TextInputProps extends React.HTMLAttributes<HTMLInputElement> {
@@ -10,7 +10,7 @@ export interface TextInputProps extends React.HTMLAttributes<HTMLInputElement> {
 class TextInput extends React.Component<TextInputProps> {
     render() {
         const { disabled, invalid, className, ...rest } = this.props;
-        const combinedClassName = makeClassName(
+        const combinedClassName = combineClasses(
             [true, className],
             [true, styles.textinput],
             [disabled, styles.disabled],
