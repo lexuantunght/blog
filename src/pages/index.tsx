@@ -6,7 +6,7 @@ import Button from '@common/ui/Button';
 import PostItem from '@common/widget/post-item';
 import Pagination from '@common/ui/Pagination';
 import ModuleContainer from '@common/shared/module-container';
-import HomeController from '@controller/home/home-controler';
+import HomeController from '@controller/home/home-controller';
 
 type HomeProps = {
     data: { posts: []; pageCount: number };
