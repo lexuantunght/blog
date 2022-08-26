@@ -5,10 +5,14 @@ import TextInput from '@common/ui/TextInput';
 import Button from '@common/ui/Button';
 import PostItem from '@common/widget/post-item';
 import Pagination from '@common/ui/Pagination';
+import ModuleContainer from '@common/shared/module-container';
+import HomeController from '@controller/home/home-controler';
 
 type HomeProps = {
     data: { posts: []; totalPages: number };
 };
+
+const controller = ModuleContainer.resolve(HomeController);
 
 const Home: NextPage<HomeProps> = (props) => {
     const { posts = [], totalPages } = props.data;
@@ -59,15 +63,7 @@ const Home: NextPage<HomeProps> = (props) => {
 };
 
 export async function getServerSideProps() {
-    const res = await fetch('https://shibala-api.herokuapp.com/post/getAll/8/0').then((res) =>
-        res.json()
-    );
-    const data = await res.data;
-    return {
-        props: {
-            data,
-        },
-    };
+    return controller.getServerSideProps('/post/getAll/8/0');
 }
 
 export default Home;

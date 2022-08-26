@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { Tag } from '@common/model';
+import { Category } from '@common/model';
 import { IoEye, IoPricetag } from 'react-icons/io5';
 import styles from './post-item.module.scss';
 
@@ -11,7 +11,7 @@ type PostItemProps = {
     description?: string;
     views: number;
     created_at: Date;
-    category: Tag;
+    category: Category;
     onClick?: () => void;
 };
 

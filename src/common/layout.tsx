@@ -1,34 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
+import HeaderConfig from '@config/header';
 import HeaderBar from '@common/widget/header-bar';
 import FooterBar from '@common/widget/footer-bar';
 
 type PageLayoutProps = {
     children: React.ReactNode;
 };
-
-const menuItems = [
-    {
-        label: 'Home',
-        path: '/',
-    },
-    {
-        label: 'Web Dev',
-        path: '/web-dev',
-    },
-    {
-        label: 'Stories',
-        path: '/stories',
-    },
-    {
-        label: 'ZA Journey',
-        path: '/za-journey',
-    },
-    {
-        label: 'About me',
-        path: '/about-me',
-    },
-];
 
 const PageLayout = ({ children }: PageLayoutProps) => {
     React.useEffect(() => {
@@ -41,7 +19,7 @@ const PageLayout = ({ children }: PageLayoutProps) => {
                 <meta name="description" content="A blog of Le Xuan Tung" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <HeaderBar menuItems={menuItems} />
+            <HeaderBar menuItems={HeaderConfig.menuItems} />
             <main>{children}</main>
             <FooterBar />
         </>

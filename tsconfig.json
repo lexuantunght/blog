@@ -17,8 +17,12 @@
         "baseUrl": ".",
         "paths": {
             "@common/*": ["src/common/*"],
-            "@controller/*": ["src/controller/*"]
-        }
+            "@controller/*": ["src/controller/*"],
+            "@config/*": ["src/config/*"],
+            "@data-access/*": ["src/data-access/*"]
+        },
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
     "exclude": ["node_modules"]

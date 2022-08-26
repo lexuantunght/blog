@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import '../styles/index.scss';
 import '@common/ui/theme.scss';
 import type { AppProps } from 'next/app';

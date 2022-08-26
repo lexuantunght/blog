@@ -46,20 +46,20 @@ button {
 .custom-scroll.scrolling {
     --scrollbar-color: #00000040 !important;
 }
-::-webkit-scrollbar {
+.custom-scroll::-webkit-scrollbar {
     display: block;
     width: 10px;
 }
-::-webkit-scrollbar-button {
+.custom-scroll::-webkit-scrollbar-button {
     display: none;
 }
-::-webkit-scrollbar-track {
+.custom-scroll::-webkit-scrollbar-track {
     background-color: #00000000;
 }
-::-webkit-scrollbar-track-piece {
+.custom-scroll::-webkit-scrollbar-track-piece {
     background-color: #00000000;
 }
-::-webkit-scrollbar-thumb {
+.custom-scroll::-webkit-scrollbar-thumb {
     background-color: var(--scrollbar-color);
     border-radius: 24px;
 }
