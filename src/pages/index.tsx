@@ -9,13 +9,13 @@ import ModuleContainer from '@common/shared/module-container';
 import HomeController from '@controller/home/home-controler';
 
 type HomeProps = {
-    data: { posts: []; totalPages: number };
+    data: { posts: []; pageCount: number };
 };
 
 const controller = ModuleContainer.resolve(HomeController);
 
 const Home: NextPage<HomeProps> = (props) => {
-    const { posts = [], totalPages } = props.data;
+    const { posts = [], pageCount } = props.data;
     return (
         <PageLayout>
             <Head>
@@ -54,7 +54,7 @@ const Home: NextPage<HomeProps> = (props) => {
                         ))}
                     </div>
                     <div className="home-recent-posts-pagination">
-                        <Pagination pageCount={totalPages} page={0} />
+                        <Pagination pageCount={pageCount} page={0} />
                     </div>
                 </div>
             </>
@@ -63,7 +63,7 @@ const Home: NextPage<HomeProps> = (props) => {
 };
 
 export async function getServerSideProps() {
-    return controller.getServerSideProps('/post/getAll/8/0');
+    return controller.getServerSideProps();
 }
 
 export default Home;

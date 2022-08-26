@@ -19,7 +19,9 @@
             "@common/*": ["src/common/*"],
             "@controller/*": ["src/controller/*"],
             "@config/*": ["src/config/*"],
-            "@data-access/*": ["src/data-access/*"]
+            "@data-access/*": ["src/data-access/*"],
+            "@utils/*": ["src/utils/*"],
+            "@domain/*": ["src/domain/*"]
         },
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true
