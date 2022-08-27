@@ -5,7 +5,6 @@ import { IoEye, IoPricetag } from 'react-icons/io5';
 import styles from './post-item.module.scss';
 
 type PostItemProps = {
-    _id: string | number;
     imageURL?: string;
     title?: string;
     description?: string;

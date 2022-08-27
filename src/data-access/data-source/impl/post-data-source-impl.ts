@@ -13,6 +13,12 @@ class PostDataSourceImpl implements PostDataSource {
         const { data } = response.data;
         return { posts: data.posts, pageCount: data.totalPages };
     }
+
+    public async get(id: string | number) {
+        const response = await this.httpClient.get(`/post/get/${id}`);
+        const { data } = response.data;
+        return data;
+    }
 }
 
 export default PostDataSourceImpl;

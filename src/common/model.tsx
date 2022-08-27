@@ -1,1 +1,1 @@
-export type Category = 'Web Development' | 'Other' | 'ZA Journey' | 'Life';
+export type Category = 'Web development' | 'Other' | 'ZA Journey' | 'Life';

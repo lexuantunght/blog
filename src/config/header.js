@@ -9,12 +9,12 @@ const HeaderConfig = {
             path: '/web-dev',
         },
         {
-            label: 'Stories',
-            path: '/stories',
-        },
-        {
             label: 'ZA Journey',
             path: '/za-journey',
+        },
+        {
+            label: 'Other',
+            path: '/other',
         },
         {
             label: 'About me',

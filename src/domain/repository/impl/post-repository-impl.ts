@@ -10,8 +10,12 @@ export const PostRepositoryName = 'PostRepository';
 class PostRepositoryImpl implements PostRepository {
     constructor(@ModuleContainer.inject(PostDataSourceName) private dataSource: PostDataSource) {}
 
-    public async getAll(page?: number, limit?: number) {
+    public getAll(page?: number, limit?: number) {
         return this.dataSource.getAll(page, limit);
+    }
+
+    public get(id: string | number) {
+        return this.dataSource.get(id);
     }
 }
 

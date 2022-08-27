@@ -5,4 +5,5 @@ export default interface PostDataSource {
         page?: number,
         limit?: number
     ) => Promise<{ posts: Array<PostAPIEntity>; pageCount: number }>;
+    get: (id: string | number) => Promise<PostAPIEntity>;
 }

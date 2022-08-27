@@ -1,0 +1,35 @@
+.web-dev-post-header-container {
+    background-color: var(--gray-200);
+}
+.web-dev-post-header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .detail-post-info {
+        display: flex;
+        flex-direction: column;
+        .detail-post-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 36px;
+            margin-bottom: 2rem;
+        }
+        div {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        div > span {
+            margin-left: 0.5rem;
+        }
+    }
+}
+.detail-post-photos {
+    width: 100%;
+    aspect-ratio: 3/2;
+}

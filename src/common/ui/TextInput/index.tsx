@@ -1,5 +1,5 @@
 import React from 'react';
-import combineClasses from '../combine-classes';
+import combineClasses from '@common/ui/combine-classes';
 import styles from './text-input.module.scss';
 
 export interface TextInputProps extends React.HTMLAttributes<HTMLInputElement> {

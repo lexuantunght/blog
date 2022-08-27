@@ -18,6 +18,7 @@ const PageLayout = ({ children }: PageLayoutProps) => {
             <Head>
                 <meta name="description" content="A blog of Le Xuan Tung" />
                 <link rel="icon" href="/favicon.ico" />
+                <title>Blog & Diary</title>
             </Head>
             <HeaderBar menuItems={HeaderConfig.menuItems} />
             <main>{children}</main>
