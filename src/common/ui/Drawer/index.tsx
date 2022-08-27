@@ -4,15 +4,18 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 import styles from './drawer.module.scss';
 import Button from '../Button';
 import { GrClose } from 'react-icons/gr';
+import combineClasses from '@common/ui/combine-classes';
 
 type DrawerProps = {
     show?: boolean;
     timeout?: number;
     showClose?: boolean;
     onClose?: () => void;
+    children: React.ReactNode;
+    className?: string;
 };
 
-const DrawerContent = ({ show, showClose = true, onClose }: DrawerProps) => {
+const DrawerContent = ({ show, showClose = true, onClose, children, className }: DrawerProps) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const contentRef = React.useRef<HTMLDivElement>(null);
 
@@ -33,13 +36,15 @@ const DrawerContent = ({ show, showClose = true, onClose }: DrawerProps) => {
 
     const content = (
         <div ref={containerRef} className={styles.container}>
-            <div ref={contentRef} className={styles.content}>
+            <div
+                ref={contentRef}
+                className={combineClasses([true, styles.content], [true, className])}>
                 {showClose && (
                     <Button mode="text" onClick={onClose} className={styles.close}>
                         <GrClose />
                     </Button>
                 )}
-                <div className={styles.body}>hahah</div>
+                <div className={styles.body}>{children}</div>
             </div>
         </div>
     );

@@ -33,7 +33,9 @@ const HeaderBar = ({ menuItems = [] }: HeaderProps) => {
                         <FaBars />
                     </Button>
                 </div>
-                <Drawer show={showMenu} onClose={() => setShowMenu(false)} />
+                <Drawer show={showMenu} onClose={() => setShowMenu(false)}>
+                    haha
+                </Drawer>
             </div>
         </div>
     );

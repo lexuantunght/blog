@@ -13,6 +13,18 @@ class NetworkAdapter {
     public get(url: string) {
         return axios.get(url, this.config);
     }
+
+    public post(url: string, data: unknown) {
+        return axios.post(url, data, this.config);
+    }
+
+    public put(url: string, data: unknown) {
+        return axios.put(url, data, this.config);
+    }
+
+    public delete(url: string) {
+        return axios.delete(url, this.config);
+    }
 }
 
 export default NetworkAdapter;

@@ -37,13 +37,7 @@ const WebDevPostDetail: NextPage<WebDevPostDetailProps> = ({ post }) => {
                         </div>
                         <Carousel
                             className="detail-post-photos"
-                            photos={[
-                                ...post.photos.map((p) => p.url),
-                                'https://picsum.photos/200/300',
-                                'https://picsum.photos/400/500',
-                                'https://picsum.photos/500/600',
-                                'https://picsum.photos/600/700',
-                            ]}
+                            photos={post.photos.map((p) => p.url)}
                         />
                     </div>
                 </div>

@@ -22,3 +22,9 @@
 .textinput.invalid {
     border-color: var(--error-color);
 }
+.error {
+    color: var(--error-color);
+    &::first-letter {
+        text-transform: capitalize;
+    }
+}

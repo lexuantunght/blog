@@ -1,0 +1,51 @@
+.ad-login-container {
+    background-color: var(--secondary-color);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .ad-login-form {
+        background-color: var(--background);
+        width: 30%;
+        border-radius: var(--border-radius);
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        min-height: 50%;
+        button {
+            width: fit-content;
+            margin: 2rem auto 0 auto;
+            display: flex;
+            align-items: center;
+            span {
+                margin-left: 0.5rem;
+            }
+        }
+        label {
+            font-size: 14px;
+            margin-top: 1rem;
+        }
+        input {
+            min-height: 36px;
+        }
+        .ad-login-error {
+            margin-top: 0.5rem;
+            color: var(--error-color);
+        }
+        .ad-login-title {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        @media (max-width: 992px) {
+            width: 50%;
+        }
+        @media (max-width: 768px) {
+            width: 60%;
+        }
+        @media (max-width: 576px) {
+            width: 80%;
+        }
+    }
+}
