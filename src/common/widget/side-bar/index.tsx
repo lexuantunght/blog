@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { FaBars } from 'react-icons/fa';
 import Divider from '@common/ui/Divider';
 import Drawer from '@common/ui/Drawer';
@@ -17,10 +18,12 @@ type SideBarProps = {
         label: string;
         path?: string;
         icon?: React.ReactNode;
+        onClick?: () => void;
     }>;
 };
 
 const SideBarContent = (props: SideBarProps) => {
+    const router = useRouter();
     const { avatar, name, menuItems = [], coreItems = [] } = props;
     return (
         <div className={styles.container}>
@@ -28,14 +31,28 @@ const SideBarContent = (props: SideBarProps) => {
             <div className={styles.name}>{name}</div>
             <Divider />
             {menuItems.map((item, idx) => (
-                <Button key={idx} mode="text" className={styles.item}>
+                <Button
+                    key={idx}
+                    mode="text"
+                    className={styles.item}
+                    onClick={() => router.push(item.path)}>
                     {item.icon}
                     <span>{item.label}</span>
                 </Button>
             ))}
             <Divider />
             {coreItems.map((item, idx) => (
-                <Button key={idx} mode="text" className={styles.item}>
+                <Button
+                    key={idx}
+                    mode="text"
+                    className={styles.item}
+                    onClick={() => {
+                        if (item.path) {
+                            router.push(item.path);
+                        } else {
+                            item.onClick?.();
+                        }
+                    }}>
                     {item.icon}
                     <span>{item.label}</span>
                 </Button>

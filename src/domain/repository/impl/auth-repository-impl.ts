@@ -17,6 +17,10 @@ class AuthRepositoryImpl implements AuthRepository {
     public authorize() {
         return this.dataSource.authorize();
     }
+
+    public logout() {
+        return this.dataSource.logout();
+    }
 }
 
 export default AuthRepositoryImpl;

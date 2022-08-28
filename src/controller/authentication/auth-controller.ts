@@ -12,6 +12,10 @@ class AuthController {
         return this.authUC.authorize();
     }
 
+    public logout() {
+        return this.authUC.logout();
+    }
+
     public getEventType() {
         return this.authUC.getEventType();
     }

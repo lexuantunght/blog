@@ -1,43 +1,26 @@
 import { IoHome, IoPaperPlane, IoSettings, IoMail } from 'react-icons/io5';
-import { FaUserEdit, FaUserLock, FaSignOutAlt } from 'react-icons/fa';
 
 const SideBarConfig = {
     menuItems: [
         {
             label: 'Dashboard',
-            path: '/',
+            path: '/admin',
             icon: <IoHome size={20} />,
         },
         {
             label: 'Post',
-            path: '/post',
+            path: '/admin/post',
             icon: <IoPaperPlane size={20} />,
         },
         {
             label: 'Subscribe',
-            path: '/subscribe',
+            path: '/admin/subscribe',
             icon: <IoMail size={20} />,
         },
         {
             label: 'Configuration',
-            path: '/config',
+            path: '/admin/config',
             icon: <IoSettings size={20} />,
-        },
-    ],
-    coreItems: [
-        {
-            label: 'Update profile',
-            path: '/update-profile',
-            icon: <FaUserEdit size={20} />,
-        },
-        {
-            label: 'Change password',
-            path: 'change-password',
-            icon: <FaUserLock size={20} />,
-        },
-        {
-            label: 'Log out',
-            icon: <FaSignOutAlt size={20} />,
         },
     ],
 };

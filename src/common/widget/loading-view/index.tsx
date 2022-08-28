@@ -14,7 +14,7 @@ const LoadingView = (props: LoadingViewProps) => {
             <Head>
                 <meta name="description" content="A blog of Le Xuan Tung" />
                 <link rel="icon" href="/favicon.ico" />
-                <title>Blog of Tung | Loading</title>
+                <title>Loading</title>
             </Head>
             <main className={combineClasses([true, styles.container], [true, className])}>
                 <Loader type="ellipsis" />

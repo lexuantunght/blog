@@ -20,18 +20,13 @@ const DrawerContent = ({ show, showClose = true, onClose, children, className }:
     const contentRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-        const timeout = setTimeout(() => {
-            if (show) {
-                containerRef.current?.classList.add(styles.show);
-                contentRef.current?.classList.add(styles.appear);
-            } else {
-                contentRef.current?.classList.remove(styles.appear);
-                containerRef.current?.classList.remove(styles.show);
-            }
-        }, 50);
-        return () => {
-            clearTimeout(timeout);
-        };
+        if (show) {
+            containerRef.current?.classList.add(styles.show);
+            contentRef.current?.classList.add(styles.appear);
+        } else {
+            contentRef.current?.classList.remove(styles.appear);
+            containerRef.current?.classList.remove(styles.show);
+        }
     }, [show]);
 
     const content = (

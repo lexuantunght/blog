@@ -9,26 +9,22 @@ type ModalProps = {
     show?: boolean;
     title?: string;
     timeout?: number;
+    children: React.ReactNode;
     onClose?: () => void;
 };
 
-const ModalContent = ({ show, title = 'Modal', onClose }: ModalProps) => {
+const ModalContent = ({ show, title = 'Modal', onClose, children }: ModalProps) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const contentRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-        const timeout = setTimeout(() => {
-            if (show) {
-                containerRef.current?.classList.add(styles.show);
-                contentRef.current?.classList.add(styles.appear);
-            } else {
-                contentRef.current?.classList.remove(styles.appear);
-                containerRef.current?.classList.remove(styles.show);
-            }
-        }, 100);
-        return () => {
-            clearTimeout(timeout);
-        };
+        if (show) {
+            containerRef.current?.classList.add(styles.show);
+            contentRef.current?.classList.add(styles.appear);
+        } else {
+            contentRef.current?.classList.remove(styles.appear);
+            containerRef.current?.classList.remove(styles.show);
+        }
     }, [show]);
 
     const content = (
@@ -40,8 +36,7 @@ const ModalContent = ({ show, title = 'Modal', onClose }: ModalProps) => {
                         <GrClose />
                     </Button>
                 </div>
-                <div className={styles.body}>hahah</div>
-                <div className={styles.footer}></div>
+                <div className={styles.body}>{children}</div>
             </div>
         </div>
     );
@@ -49,7 +44,7 @@ const ModalContent = ({ show, title = 'Modal', onClose }: ModalProps) => {
     return ReactDOM.createPortal(content, document.body);
 };
 
-const Modal = ({ show, timeout = 600, ...rest }: ModalProps) => {
+const Modal = ({ show, timeout = 500, ...rest }: ModalProps) => {
     return (
         <CSSTransition in={show} timeout={timeout} unmountOnExit>
             <ModalContent {...rest} show={show} />

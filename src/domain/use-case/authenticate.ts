@@ -26,6 +26,10 @@ class AuthUseCase {
         });
     }
 
+    public async logout() {
+        return this.repository.logout();
+    }
+
     public getEventType() {
         return this.AuthEventType;
     }

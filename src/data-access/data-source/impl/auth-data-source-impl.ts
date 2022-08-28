@@ -19,6 +19,11 @@ class AuthDataSourceImpl implements AuthDataSource {
         const { data } = response.data;
         return data;
     }
+
+    public async logout() {
+        await this.httpClient.get('/user/signout');
+        return true;
+    }
 }
 
 export default AuthDataSourceImpl;

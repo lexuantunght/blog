@@ -1,0 +1,78 @@
+.flex,
+.flex-row {
+    display: flex;
+}
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+.items-center {
+    align-items: center;
+}
+.items-start {
+    align-items: flex-start;
+}
+.items-end {
+    align-items: flex-end;
+}
+.items-center {
+    align-items: center;
+}
+.justify-start {
+    justify-content: start;
+}
+.justify-end {
+    justify-content: end;
+}
+.justify-between {
+    justify-content: space-between;
+}
+@for $i from 1 through 80 {
+    $val: 0.25rem * $i;
+    .h-#{$i} {
+        height: $val;
+    }
+    .w-#{$i} {
+        width: $val;
+    }
+    .mt-#{$i} {
+        margin-top: $val;
+    }
+    .mb-#{$i} {
+        margin-bottom: $val;
+    }
+    .ml-#{$i} {
+        margin-left: $val;
+    }
+    .mr-#{$i} {
+        margin-right: $val;
+    }
+    .mx-#{$i} {
+        margin-left: $val;
+        margin-right: $val;
+    }
+    .my-#{$i} {
+        margin-top: $val;
+        margin-bottom: $val;
+    }
+    .pt-#{$i} {
+        padding-top: $val;
+    }
+    .pb-#{$i} {
+        padding-bottom: $val;
+    }
+    .pl-#{$i} {
+        padding-left: $val;
+    }
+    .pr-#{$i} {
+        padding-right: $val;
+    }
+    .px-#{$i} {
+        padding-left: $val;
+        padding-right: $val;
+    }
+    .py-#{$i} {
+        padding-top: $val;
+        padding-bottom: $val;
+    }
+}

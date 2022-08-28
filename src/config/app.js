@@ -1,5 +1,5 @@
 const AppConfig = {
-    baseURL: 'https://shibala-api.herokuapp.com',
+    baseURL: 'http://localhost:8080',
 };
 
 export default AppConfig;

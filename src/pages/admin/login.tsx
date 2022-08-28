@@ -29,13 +29,11 @@ const Login: NextPage = () => {
             username: Yup.string().min(3).max(64).required(),
             password: Yup.string().min(6).max(64).required(),
         }),
-        onSubmit: async (values, { setSubmitting }) => {
+        onSubmit: async (values) => {
             const data = await controller.login(values.username, values.password);
             if (data) {
                 router.replace('/admin');
-                return;
             }
-            setSubmitting(false);
         },
     });
 

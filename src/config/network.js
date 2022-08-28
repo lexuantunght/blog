@@ -2,7 +2,7 @@ const NetworkConfig = {
     headers: {
         Accept: 'application/json',
     },
-    withCredentials: false,
+    withCredentials: true,
 };
 
 export default NetworkConfig;
