@@ -21,7 +21,7 @@
     border: 1px solid;
 }
 
-.button.primary.fill:hover {
+.button.primary.fill:enabled:hover {
     background-color: var(--primary-hover);
 }
 .button.primary.text:enabled:hover,

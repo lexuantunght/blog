@@ -1,5 +1,5 @@
 const AppConfig = {
-    baseURL: 'http://localhost:8080',
+    baseURL: 'https://blog-back-g6h0.onrender.com',
 };
 
 export default AppConfig;

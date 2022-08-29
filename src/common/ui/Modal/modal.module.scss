@@ -18,7 +18,7 @@
 }
 .content {
     min-width: 30%;
-    min-height: 20%;
+    height: fit-content;
     background-color: var(--background);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);

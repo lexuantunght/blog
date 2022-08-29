@@ -19,7 +19,10 @@ const emitter = ModuleContainer.resolve(Emitter);
 const Login: NextPage = () => {
     const router = useRouter();
     const [errorLoginText, setErrorLoginText] = React.useState('');
-    const addEmitterListener = useEventListener(emitter);
+    useEventListener(emitter, {
+        type: controller.getEventType().LOGIN_FAILED,
+        callback: (message: string) => setErrorLoginText(message),
+    });
     const formik = useFormik({
         initialValues: {
             username: '',
@@ -36,12 +39,6 @@ const Login: NextPage = () => {
             }
         },
     });
-
-    React.useEffect(() => {
-        addEmitterListener(controller.getEventType().LOGIN_FAILED, (message: string) =>
-            setErrorLoginText(message)
-        );
-    }, []);
 
     return (
         <>

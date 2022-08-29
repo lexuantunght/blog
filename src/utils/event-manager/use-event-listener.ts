@@ -19,26 +19,25 @@ export type ObjectListener = {
 };
 
 const useEventListener = (objectListener: ObjectListener = window, args?: ListenerParams) => {
-    let listener = args;
+    let listener = React.useRef(args);
 
     const addListener = (
         type: any,
         callback: ListenerFunction | ((...args: any[]) => void),
         options?: ListenerOptions
     ) => {
-        listener = { type, callback, options };
+        listener.current = { type, callback, options };
         objectListener.addEventListener(type, callback, options);
     };
 
-    if (args) {
-        const { type, callback, options } = args;
-        addListener(type, callback, options);
-    }
-
     React.useEffect(() => {
+        if (args) {
+            const { type, callback, options } = args;
+            addListener(type, callback, options);
+        }
         return () => {
-            if (listener) {
-                const { type, callback, options } = listener;
+            if (listener.current) {
+                const { type, callback, options } = listener.current;
                 objectListener.removeEventListener(type, callback, options);
             }
         };
