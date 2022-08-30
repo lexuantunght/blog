@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { NextRouter, useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import { FaUserEdit, FaUserLock, FaSignOutAlt } from 'react-icons/fa';
 import SideBarConfig from '@config/side-bar';
@@ -10,18 +10,50 @@ import Modal from '@common/ui/Modal';
 import Button from '@common/ui/Button';
 import ModuleContainer from '@common/shared/module-container';
 import AuthController from '@controller/authentication/auth-controller';
-import UserData from '@domain/model/user-data';
+import useSelector from '@utils/redux/use-selector';
+
+type AdminPageWrapperProps = {
+    children: React.ReactNode;
+    router: NextRouter;
+    className?: string;
+};
 
 type AdminPageLayoutProps = {
     children: React.ReactNode;
+    className?: string;
 };
 
 const controller = ModuleContainer.resolve(AuthController);
 
-const AdminPageLayout = ({ children }: AdminPageLayoutProps) => {
-    const router = useRouter();
+const AdminPageWrapper = ({ children, router, className }: AdminPageWrapperProps) => {
     const [loading, setLoading] = React.useState(true);
-    const [userData, setUserData] = React.useState<UserData | null>(null);
+    const userData = useSelector(controller.createSelector((state) => state.app.userData));
+
+    React.useEffect(() => {
+        controller
+            .authorize()
+            .then((data) => {
+                if (data) {
+                    controller.setUserData(data);
+                }
+            })
+            .then(() => setLoading(true));
+    }, []);
+
+    if (!userData) {
+        if (!loading) {
+            router.push('/admin/login');
+            return null;
+        }
+        return <LoadingView className="main-loading-view" />;
+    }
+
+    return <div className={className}>{children}</div>;
+};
+
+const AdminPageLayout = ({ children, className }: AdminPageLayoutProps) => {
+    const router = useRouter();
+    const userData = useSelector(controller.createSelector((state) => state.app.userData));
     const [showLogout, setShowLogout] = React.useState(false);
 
     const coreItems = [
@@ -50,23 +82,7 @@ const AdminPageLayout = ({ children }: AdminPageLayoutProps) => {
 
     React.useEffect(() => {
         document.body.classList.add('custom-scroll', 'scrolling');
-        controller
-            .authorize()
-            .then((data) => {
-                if (data) {
-                    setUserData(data);
-                }
-            })
-            .then(() => setLoading(false));
     }, []);
-
-    if (!userData) {
-        if (!loading) {
-            router.push('/admin/login');
-            return null;
-        }
-        return <LoadingView className="main-loading-view" />;
-    }
 
     return (
         <>
@@ -75,14 +91,18 @@ const AdminPageLayout = ({ children }: AdminPageLayoutProps) => {
                 <link rel="icon" href="/favicon.ico" />
                 <title>Blog of Tung | Admin</title>
             </Head>
-            <main>
-                <SideBar
-                    avatar={userData.avatar?.url}
-                    name={userData.name}
-                    menuItems={SideBarConfig.menuItems}
-                    coreItems={coreItems}
-                />
-                <div>{children}</div>
+            <main className="flex">
+                {userData && (
+                    <SideBar
+                        avatar={userData.avatar?.url}
+                        name={userData.name}
+                        menuItems={SideBarConfig.menuItems}
+                        coreItems={coreItems}
+                    />
+                )}
+                <AdminPageWrapper router={router} className={className}>
+                    {children}
+                </AdminPageWrapper>
                 <Modal show={showLogout} title="Confirmation" onClose={() => setShowLogout(false)}>
                     <form
                         className="flex-col h-24 justify-between"

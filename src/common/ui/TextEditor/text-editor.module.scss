@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    border: 1px solid var(--line-color);
+    padding: 0.75rem;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    border-top-style: hidden;
+}
+.toolbar {
+    display: flex;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    background-color: var(--gray-200);
+    border: 1px solid var(--line-color);
+    padding: 0.25rem;
+}
+.button {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+}

@@ -1,0 +1,38 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+.add {
+    background-color: var(--gray-200);
+    width: 100%;
+    aspect-ratio: 3/2;
+    border: none;
+    outline: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+.remove {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    opacity: 0.6;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+}
+.preview {
+    object-fit: cover;
+    width: 100%;
+    aspect-ratio: 3/2;
+    border-radius: var(--border-radius);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}

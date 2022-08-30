@@ -1,0 +1,26 @@
+.table {
+    table-layout: auto;
+    width: 100%;
+    & {
+        border-collapse: separate;
+        border: 1px solid var(--line-color);
+        border-radius: var(--border-radius);
+    }
+
+    td,
+    th {
+        border-left: 1px solid var(--line-color);
+        border-top: 1px solid var(--line-color);
+        padding: 0.5rem;
+    }
+
+    th {
+        border-top-style: hidden;
+        font-weight: 700;
+    }
+
+    td:first-child,
+    th:first-child {
+        border-left-style: hidden;
+    }
+}

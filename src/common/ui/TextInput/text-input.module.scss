@@ -2,7 +2,7 @@
     border-radius: var(--border-radius);
     transition: var(--transition-time);
     border: 1px solid var(--line-color);
-    padding: var(--pading-y) var(--padding-x);
+    padding: var(--padding-y) var(--padding-x);
     &:focus {
         outline: 0 none;
         outline-offset: 0;
