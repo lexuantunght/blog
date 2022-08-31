@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { IoCheckmark, IoClose } from 'react-icons/io5';
+import { IoCheckmark } from 'react-icons/io5';
 import AdminPageLayout from '@common/admin-layout';
 import TextInput from '@common/ui/TextInput';
 import Dropdown from '@common/ui/Dropdown';
@@ -10,7 +10,7 @@ import Loader from '@common/ui/Loader';
 
 const CreatePost: NextPage = () => {
     return (
-        <AdminPageLayout className="ad-page-container">
+        <AdminPageLayout className="ad-page-container custom-scroll scrolling">
             <div className="ad-page-title">Post dashboard &gt; Create</div>
             <form className="flex-col mt-4">
                 <label htmlFor="title" className="mb-1">
@@ -32,7 +32,7 @@ const CreatePost: NextPage = () => {
                 <label htmlFor="content" className="mt-4 mb-1">
                     Content
                 </label>
-                <TextEditor id="content" />
+                <TextEditor id="content" placeholder="Type content..." />
                 <div className="flex justify-end mt-4">
                     <Button type="button" variant="error" mode="outlined">
                         Cancel

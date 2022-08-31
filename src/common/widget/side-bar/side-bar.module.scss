@@ -38,7 +38,8 @@
 .toggle {
     position: fixed;
     top: 0.5rem;
-    left: 0.5rem;
+    right: 1rem;
+    background-color: var(--background);
     @media (min-width: 768px) {
         display: none;
     }

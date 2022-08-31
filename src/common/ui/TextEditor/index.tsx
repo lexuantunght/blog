@@ -7,23 +7,24 @@ import styles from './text-editor.module.scss';
 
 type TextEditorProps = {
     id?: string;
+    placeholder?: string;
 };
 
 const initialValue = [
     {
         type: 'paragraph',
-        children: [{ text: 'A line of text in a paragraph.' }],
+        children: [{ text: '' }],
     },
 ];
 
 const TextEditor = (props: TextEditorProps) => {
-    const { id } = props;
+    const { id, placeholder } = props;
     const editor = React.useMemo(() => withHistory(withReact(createEditor())), []);
     return (
         <Slate editor={editor} value={initialValue}>
             <ToolBar />
             <div className={styles.container}>
-                <Editable placeholder="Enter some rich text…" spellCheck autoFocus id={id} />
+                <Editable placeholder={placeholder} spellCheck autoFocus id={id} />
             </div>
         </Slate>
     );
