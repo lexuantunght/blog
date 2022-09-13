@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { Category } from '@common/model';
+import { Category } from 'common/model';
 import { IoEye, IoPricetag } from 'react-icons/io5';
 import styles from './post-item.module.scss';
 

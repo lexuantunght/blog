@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import ModuleContainer from '@common/shared/module-container';
+import ModuleContainer from 'common/shared/module-container';
 
 @ModuleContainer.singleton()
 class CookieManager {

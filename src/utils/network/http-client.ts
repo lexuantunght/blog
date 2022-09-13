@@ -1,5 +1,5 @@
-import ModuleContainer from '@common/shared/module-container';
-import AppConfig from '@config/app';
+import ModuleContainer from 'common/shared/module-container';
+import AppConfig from 'config/app';
 import NetworkAdapter from './adapter';
 
 @ModuleContainer.injectable()

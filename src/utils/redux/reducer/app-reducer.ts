@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import UserData from '@domain/model/user-data';
+import UserData from 'domain/model/user-data';
 
 export type AppState = {
     userData?: UserData;

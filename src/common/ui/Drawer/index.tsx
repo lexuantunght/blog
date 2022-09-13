@@ -4,7 +4,7 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 import styles from './drawer.module.scss';
 import Button from '../Button';
 import { GrClose } from 'react-icons/gr';
-import combineClasses from '@common/ui/combine-classes';
+import combineClasses from 'common/ui/combine-classes';
 
 type DrawerProps = {
     show?: boolean;

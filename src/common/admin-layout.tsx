@@ -3,14 +3,14 @@ import Head from 'next/head';
 import { NextRouter, useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import { FaUserEdit, FaUserLock, FaSignOutAlt } from 'react-icons/fa';
-import SideBarConfig from '@config/side-bar';
-import SideBar from '@common/widget/side-bar';
-import LoadingView from '@common/widget/loading-view';
-import Modal from '@common/ui/Modal';
-import Button from '@common/ui/Button';
-import ModuleContainer from '@common/shared/module-container';
-import AuthController from '@controller/authentication/auth-controller';
-import useSelector from '@utils/redux/use-selector';
+import SideBarConfig from 'config/side-bar';
+import SideBar from 'common/widget/side-bar';
+import LoadingView from 'common/widget/loading-view';
+import Modal from 'common/ui/Modal';
+import Button from 'common/ui/Button';
+import ModuleContainer from 'common/shared/module-container';
+import AuthController from 'controller/authentication/auth-controller';
+import useSelector from 'utils/redux/use-selector';
 
 type AdminPageWrapperProps = {
     children: React.ReactNode;
@@ -37,7 +37,7 @@ const AdminPageWrapper = ({ children, router, className }: AdminPageWrapperProps
                     controller.setUserData(data);
                 }
             })
-            .then(() => setLoading(true));
+            .then(() => setLoading(false));
     }, []);
 
     if (!userData) {

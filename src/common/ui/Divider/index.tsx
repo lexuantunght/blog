@@ -1,4 +1,4 @@
-import combineClasses from '@common/ui/combine-classes';
+import combineClasses from 'common/ui/combine-classes';
 import styles from './divider.module.scss';
 
 type DividerProps = {

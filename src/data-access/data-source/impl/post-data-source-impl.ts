@@ -1,6 +1,6 @@
-import ModuleContainer from '@common/shared/module-container';
-import HttpClient from '@utils/network/http-client';
-import PostDataSource from '../post-data-source';
+import ModuleContainer from 'common/shared/module-container';
+import HttpClient from 'utils/network/http-client';
+import PostDataSource from 'data-access/data-source/post-data-source';
 
 export const PostDataSourceName = 'PostDataSource';
 @ModuleContainer.injectable()

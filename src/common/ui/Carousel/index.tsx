@@ -1,9 +1,9 @@
 import React from 'react';
 import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5';
-import Button from '@common/ui/Button';
-import combineClasses from '@common/ui/combine-classes';
+import Button from 'common/ui/Button';
+import combineClasses from 'common/ui/combine-classes';
 import styles from './carousel.module.scss';
-import PagingIndicator from '@common/ui/PagingIndicator';
+import PagingIndicator from 'common/ui/PagingIndicator';
 
 type CarouselProps = {
     photos: Array<string>;

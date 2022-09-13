@@ -3,11 +3,11 @@ import Head from 'next/head';
 import moment from 'moment';
 import parse from 'html-react-parser';
 import { IoCalendar, IoPricetag } from 'react-icons/io5';
-import PageLayout from '@common/layout';
-import Post from '@domain/model/post';
-import ModuleContainer from '@common/shared/module-container';
-import PostController from '@controller/post/post-controller';
-import Carousel from '@common/ui/Carousel';
+import PageLayout from 'common/layout';
+import Post from 'domain/model/post';
+import ModuleContainer from 'common/shared/module-container';
+import PostController from 'controller/post/post-controller';
+import Carousel from 'common/ui/Carousel';
 
 type WebDevPostDetailProps = {
     post: Post;

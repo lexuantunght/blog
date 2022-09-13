@@ -1,5 +1,5 @@
 import { createDraftSafeSelector } from '@reduxjs/toolkit';
-import store, { RootState } from '@utils/redux/store';
+import store, { RootState } from 'utils/redux/store';
 
 class BaseController {
     public dispatch = store.dispatch;

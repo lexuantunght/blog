@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import Loader from '@common/ui/Loader';
+import Loader from 'common/ui/Loader';
 import styles from './loading-view.module.scss';
-import combineClasses from '@common/ui/combine-classes';
+import combineClasses from 'common/ui/combine-classes';
 
 type LoadingViewProps = {
     className?: string;

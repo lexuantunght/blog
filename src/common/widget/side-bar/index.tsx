@@ -1,10 +1,10 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { FaBars } from 'react-icons/fa';
-import Divider from '@common/ui/Divider';
-import Drawer from '@common/ui/Drawer';
+import Divider from 'common/ui/Divider';
+import Drawer from 'common/ui/Drawer';
 import styles from './side-bar.module.scss';
-import Button from '@common/ui/Button';
+import Button from 'common/ui/Button';
 
 type SideBarProps = {
     avatar?: string;

@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import PageLayout from '@common/layout';
+import PageLayout from 'common/layout';
 
 const WebDev: NextPage = () => {
     return (

@@ -1,6 +1,6 @@
-import ModuleContainer from '@common/shared/module-container';
-import { PostRepositoryName } from '@domain/repository/impl/post-repository-impl';
-import type PostRepository from '@domain/repository/post-repository';
+import ModuleContainer from 'common/shared/module-container';
+import { PostRepositoryName } from 'domain/repository/impl/post-repository-impl';
+import type PostRepository from 'domain/repository/post-repository';
 
 @ModuleContainer.injectable()
 class PostUseCase {

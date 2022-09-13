@@ -1,16 +1,16 @@
 import type { NextPage, GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import PageLayout from '@common/layout';
-import TextInput from '@common/ui/TextInput';
-import Button from '@common/ui/Button';
-import PostItem from '@common/widget/post-item';
-import Pagination from '@common/ui/Pagination';
-import ModuleContainer from '@common/shared/module-container';
-import HomeController from '@controller/home/home-controller';
-import toNormalizePath from '@common/helper/to-normalize-path';
-import getPathCategory from '@common/helper/get-path-category';
-import Post from '@domain/model/post';
+import PageLayout from 'common/layout';
+import TextInput from 'common/ui/TextInput';
+import Button from 'common/ui/Button';
+import PostItem from 'common/widget/post-item';
+import Pagination from 'common/ui/Pagination';
+import ModuleContainer from 'common/shared/module-container';
+import HomeController from 'controller/home/home-controller';
+import toNormalizePath from 'common/helper/to-normalize-path';
+import getPathCategory from 'common/helper/get-path-category';
+import Post from 'domain/model/post';
 
 type HomeProps = {
     data: { posts: Array<Post>; pageCount: number };

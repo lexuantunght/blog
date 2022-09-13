@@ -1,7 +1,7 @@
-import ModuleContainer from '@common/shared/module-container';
-import type AuthRepository from '@domain/repository/auth-repository';
-import { AuthRepositoryName } from '@domain/repository/impl/auth-repository-impl';
-import Emitter from '@utils/event-manager/emitter';
+import ModuleContainer from 'common/shared/module-container';
+import type AuthRepository from 'domain/repository/auth-repository';
+import { AuthRepositoryName } from 'domain/repository/impl/auth-repository-impl';
+import Emitter from 'utils/event-manager/emitter';
 
 @ModuleContainer.injectable()
 class AuthUseCase {

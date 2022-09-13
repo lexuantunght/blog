@@ -1,7 +1,7 @@
-import ModuleContainer from '@common/shared/module-container';
-import { PostDataSourceName } from '@data-access/data-source/impl/post-data-source-impl';
-import type PostDataSource from '@data-access/data-source/post-data-source';
-import PostRepository from '../post-repository';
+import ModuleContainer from 'common/shared/module-container';
+import { PostDataSourceName } from 'data-access/data-source/impl/post-data-source-impl';
+import type PostDataSource from 'data-access/data-source/post-data-source';
+import PostRepository from 'domain/repository/post-repository';
 
 export const PostRepositoryName = 'PostRepository';
 

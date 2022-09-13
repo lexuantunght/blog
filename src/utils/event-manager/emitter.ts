@@ -1,4 +1,4 @@
-import ModuleContainer from '@common/shared/module-container';
+import ModuleContainer from 'common/shared/module-container';
 import { EventEmitter } from 'events';
 
 @ModuleContainer.singleton()

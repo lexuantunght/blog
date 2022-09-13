@@ -1,6 +1,6 @@
 import React from 'react';
 import _times from 'lodash-es/times';
-import combineClasses from '@common/ui/combine-classes';
+import combineClasses from 'common/ui/combine-classes';
 import styles from './paging-indicator.module.scss';
 
 type PagingIndicatorProps = {

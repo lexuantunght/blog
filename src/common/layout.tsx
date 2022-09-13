@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import HeaderConfig from '@config/header';
-import HeaderBar from '@common/widget/header-bar';
-import FooterBar from '@common/widget/footer-bar';
+import HeaderConfig from 'config/header';
+import HeaderBar from 'common/widget/header-bar';
+import FooterBar from 'common/widget/footer-bar';
 
 type PageLayoutProps = {
     children: React.ReactNode;

@@ -1,32 +1,32 @@
 import React from 'react';
-import { createEditor } from 'slate';
-import { Slate, Editable, withReact } from 'slate-react';
-import { withHistory } from 'slate-history';
-import ToolBar from './toolbar';
+import dynamic from 'next/dynamic';
+import 'react-quill/dist/quill.snow.css';
+import combineClasses from 'common/ui/combine-classes';
 import styles from './text-editor.module.scss';
+
+const ReactQuill = dynamic(
+    () => {
+        return import('react-quill');
+    },
+    { ssr: false }
+);
 
 type TextEditorProps = {
     id?: string;
     placeholder?: string;
+    className?: string;
 };
 
-const initialValue = [
-    {
-        type: 'paragraph',
-        children: [{ text: '' }],
-    },
-];
-
 const TextEditor = (props: TextEditorProps) => {
-    const { id, placeholder } = props;
-    const editor = React.useMemo(() => withHistory(withReact(createEditor())), []);
+    const { id, placeholder, className } = props;
+
     return (
-        <Slate editor={editor} value={initialValue}>
-            <ToolBar />
-            <div className={styles.container}>
-                <Editable placeholder={placeholder} spellCheck autoFocus id={id} />
-            </div>
-        </Slate>
+        <ReactQuill
+            theme="snow"
+            id={id}
+            className={combineClasses([true, styles.editor], [true, className])}
+            placeholder={placeholder}
+        />
     );
 };
 

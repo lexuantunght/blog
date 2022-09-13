@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
 import { IoCheckmark } from 'react-icons/io5';
-import AdminPageLayout from '@common/admin-layout';
-import TextInput from '@common/ui/TextInput';
-import Dropdown from '@common/ui/Dropdown';
-import ImageUploader from '@common/ui/ImageUploader';
-import TextEditor from '@common/ui/TextEditor';
-import Button from '@common/ui/Button';
-import Loader from '@common/ui/Loader';
+import AdminPageLayout from 'common/admin-layout';
+import TextInput from 'common/ui/TextInput';
+import Dropdown from 'common/ui/Dropdown';
+import ImageUploader from 'common/ui/ImageUploader';
+import TextEditor from 'common/ui/TextEditor';
+import Button from 'common/ui/Button';
+import Loader from 'common/ui/Loader';
 
 const CreatePost: NextPage = () => {
     return (

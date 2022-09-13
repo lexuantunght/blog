@@ -1,6 +1,6 @@
 import React from 'react';
 import { IoChevronDown } from 'react-icons/io5';
-import combineClasses from '@common/ui/combine-classes';
+import combineClasses from 'common/ui/combine-classes';
 import styles from './dropdown.module.scss';
 
 type ItemDropdown = {

@@ -1,4 +1,4 @@
-import { Category } from '@common/model';
+import { Category } from 'common/model';
 
 export default interface PostAPIEntity {
     _id: string | number;

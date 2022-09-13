@@ -2,11 +2,11 @@ import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { IoAdd } from 'react-icons/io5';
 import { TbEdit, TbTrash } from 'react-icons/tb';
-import AdminPageLayout from '@common/admin-layout';
-import Button from '@common/ui/Button';
-import ModuleContainer from '@common/shared/module-container';
-import PostController from '@controller/post/post-controller';
-import Post from '@domain/model/post';
+import AdminPageLayout from 'common/admin-layout';
+import Button from 'common/ui/Button';
+import ModuleContainer from 'common/shared/module-container';
+import PostController from 'controller/post/post-controller';
+import Post from 'domain/model/post';
 import moment from 'moment';
 
 const controller = ModuleContainer.resolve(PostController);

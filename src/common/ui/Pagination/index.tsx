@@ -1,7 +1,7 @@
 import React from 'react';
 import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5';
-import Button from '@common/ui/Button';
-import combineClasses from '@common/ui/combine-classes';
+import Button from 'common/ui/Button';
+import combineClasses from 'common/ui/combine-classes';
 import styles from './pagination.module.scss';
 
 type PaginationProps = {

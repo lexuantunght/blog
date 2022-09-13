@@ -1,4 +1,4 @@
-import { Category } from '@common/model';
+import { Category } from 'common/model';
 
 const getPathCategory = (category: Category): string | null => {
     switch (category) {

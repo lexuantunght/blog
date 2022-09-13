@@ -1,5 +1,5 @@
 import axios from 'axios';
-import NetworkConfig from '@config/network';
+import NetworkConfig from 'config/network';
 
 class NetworkAdapter {
     private config;

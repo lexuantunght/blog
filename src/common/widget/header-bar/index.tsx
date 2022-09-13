@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './header-bar.module.scss';
-import Button from '@common/ui/Button';
+import Button from 'common/ui/Button';
 import { FaBars } from 'react-icons/fa';
-import Drawer from '@common/ui/Drawer';
-import TextInput from '@common/ui/TextInput';
+import Drawer from 'common/ui/Drawer';
+import TextInput from 'common/ui/TextInput';
 
 type HeaderProps = {
     menuItems?: Array<{ label: string; path: string }>;

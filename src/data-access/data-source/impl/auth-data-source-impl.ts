@@ -1,5 +1,5 @@
-import ModuleContainer from '@common/shared/module-container';
-import HttpClient from '@utils/network/http-client';
+import ModuleContainer from 'common/shared/module-container';
+import HttpClient from 'utils/network/http-client';
 import AuthDataSource from '../auth-data-source';
 
 export const AuthDataSourceName = 'AuthDataSource';
