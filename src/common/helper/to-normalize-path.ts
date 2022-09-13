@@ -3,7 +3,8 @@ const toNormalizePath = (title: string) => {
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .toLowerCase()
-        .replaceAll(' ', '-');
+        .split(' ')
+        .join('-');
 };
 
 export default toNormalizePath;

@@ -10,22 +10,22 @@ const PostList: NextPage = () => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const { slug } = context.query;
-    if (!slug || !slug[0]) {
+    const { category } = context.query;
+    if (typeof category !== 'string' || !category) {
         return {
             notFound: true,
         };
     }
     const categories = await controller.getCategories();
-    const category = categories.find((cate) => toNormalizePath(cate.name) === slug[0]);
-    if (!category) {
+    const _category = categories.find((cate) => toNormalizePath(cate.name) === category);
+    if (!_category) {
         return {
             notFound: true,
         };
     }
     return {
         props: {
-            category,
+            category: _category,
         },
     };
 };
