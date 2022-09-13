@@ -19,6 +19,16 @@ class PostDataSourceImpl implements PostDataSource {
         const { data } = response.data;
         return data;
     }
+
+    public async getCategories() {
+        const response = await this.httpClient.get('/admin/category/getAll');
+        const { data } = response.data;
+        return data;
+    }
+
+    public async create(data: FormData) {
+        await this.httpClient.post('/admin/post/create', data);
+    }
 }
 
 export default PostDataSourceImpl;

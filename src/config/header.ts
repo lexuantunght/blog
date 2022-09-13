@@ -5,16 +5,8 @@ const HeaderConfig = {
             path: '/',
         },
         {
-            label: 'Web Dev',
-            path: '/web-dev',
-        },
-        {
-            label: 'ZA Journey',
-            path: '/za-journey',
-        },
-        {
-            label: 'Other',
-            path: '/other',
+            label: 'Post',
+            path: '/post',
         },
         {
             label: 'About me',

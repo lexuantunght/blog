@@ -1,4 +1,5 @@
 import ModuleContainer from 'common/shared/module-container';
+import PostCreation from 'domain/model/post-creation';
 import { PostRepositoryName } from 'domain/repository/impl/post-repository-impl';
 import type PostRepository from 'domain/repository/post-repository';
 
@@ -17,6 +18,22 @@ class PostUseCase {
 
     public getPost(postId: string | number) {
         return this.repository.get(postId);
+    }
+
+    public getCategories() {
+        return this.repository.getCategories();
+    }
+
+    public createPost(post: PostCreation) {
+        const formData = new FormData();
+        formData.append('title', post.title);
+        formData.append('content', post.content);
+        formData.append('mode', post.mode);
+        formData.append('category', post.category);
+        post.photos.forEach((photo) => {
+            formData.append('image', photo.file, photo.name);
+        });
+        return this.repository.create(formData);
     }
 }
 

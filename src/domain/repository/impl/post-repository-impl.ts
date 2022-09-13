@@ -17,6 +17,14 @@ class PostRepositoryImpl implements PostRepository {
     public get(id: string | number) {
         return this.dataSource.get(id);
     }
+
+    public getCategories() {
+        return this.dataSource.getCategories();
+    }
+
+    public create(data: FormData) {
+        return this.dataSource.create(data);
+    }
 }
 
 export default PostRepositoryImpl;

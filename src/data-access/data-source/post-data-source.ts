@@ -1,4 +1,5 @@
-import PostAPIEntity from './entity/post-api-entity';
+import CategoryAPIEntity from 'data-access/data-source/entity/category-api-entity';
+import PostAPIEntity from 'data-access/data-source/entity/post-api-entity';
 
 export default interface PostDataSource {
     getAll: (
@@ -6,4 +7,6 @@ export default interface PostDataSource {
         limit?: number
     ) => Promise<{ posts: Array<PostAPIEntity>; pageCount: number }>;
     get: (id: string | number) => Promise<PostAPIEntity>;
+    getCategories: () => Promise<Array<CategoryAPIEntity>>;
+    create: (data: FormData) => Promise<void>;
 }

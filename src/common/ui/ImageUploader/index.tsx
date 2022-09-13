@@ -1,16 +1,11 @@
+import { ImageFile } from 'common/model';
 import React from 'react';
 import { GrClose } from 'react-icons/gr';
 import { IoCloudUpload } from 'react-icons/io5';
 import styles from './image-uploader.module.scss';
 
-type ImageFile = {
-    file?: any;
-    url?: any;
-    name?: string;
-};
-
 type ImageUploaderProps = {
-    onChange?: CallableFunction;
+    onChange?: (images: ImageFile[]) => void;
     value?: Array<ImageFile>;
     id?: string;
 };

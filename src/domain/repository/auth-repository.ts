@@ -1,4 +1,4 @@
-import UserData from '../model/user-data';
+import UserData from 'domain/model/user-data';
 
 export default interface AuthRepository {
     login: (username: string, password: string) => Promise<UserData>;

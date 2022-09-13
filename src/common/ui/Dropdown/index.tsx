@@ -10,8 +10,8 @@ type ItemDropdown = {
 
 type DropdownProps = {
     options?: ItemDropdown[];
-    value?: ItemDropdown;
-    onChange?: (item: ItemDropdown) => void;
+    value?: React.ReactNode;
+    onChange?: (item: React.ReactNode) => void;
     className?: string;
     id?: string;
 };
@@ -44,7 +44,7 @@ const Dropdown = ({ options = [], onChange, value, className, id }: DropdownProp
             ref={contentRef}
             id={id}>
             <button type="button" className={styles.button} onClick={() => setIsOpen(!isOpen)}>
-                <div className={styles.value}>{value?.value || options[0]?.value}</div>
+                <div className={styles.value}>{value || options[0]?.value}</div>
                 <IoChevronDown size={20} />
             </button>
             <div className={combineClasses([true, styles.content], [isOpen, styles.open])}>
@@ -52,7 +52,7 @@ const Dropdown = ({ options = [], onChange, value, className, id }: DropdownProp
                     <div
                         key={index}
                         onClick={() => {
-                            onChange?.(item);
+                            onChange?.(item.value);
                             handleClose();
                         }}>
                         {item.value}

@@ -9,7 +9,6 @@ import Pagination from 'common/ui/Pagination';
 import ModuleContainer from 'common/shared/module-container';
 import HomeController from 'controller/home/home-controller';
 import toNormalizePath from 'common/helper/to-normalize-path';
-import getPathCategory from 'common/helper/get-path-category';
 import Post from 'domain/model/post';
 
 type HomeProps = {
@@ -23,11 +22,9 @@ const Home: NextPage<HomeProps> = (props) => {
     const { posts = [], pageCount } = props.data;
 
     const onClickPostItem = (post: any) => {
-        const categoryPath = getPathCategory(post.category);
+        const categoryPath = toNormalizePath(post.category);
         const titlePath = toNormalizePath(post.title);
-        router.push(`${categoryPath}/${post._id}`, `${categoryPath}/${post._id}/${titlePath}`, {
-            shallow: true,
-        });
+        router.push(`/post/${categoryPath}/${titlePath}-${post._id}`);
     };
 
     return (

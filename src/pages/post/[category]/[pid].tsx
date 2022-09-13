@@ -9,17 +9,21 @@ import ModuleContainer from 'common/shared/module-container';
 import PostController from 'controller/post/post-controller';
 import Carousel from 'common/ui/Carousel';
 
-type WebDevPostDetailProps = {
+type PostListProps = {
     post: Post;
 };
 
 const controller = ModuleContainer.resolve(PostController);
 
-const WebDevPostDetail: NextPage<WebDevPostDetailProps> = ({ post }) => {
+const PostList: NextPage<PostListProps> = (props) => {
+    const { post } = props;
+
     return (
         <PageLayout>
             <Head>
-                <title>Web Dev | {post.title}</title>
+                <title>
+                    {post.category} | {post.title}
+                </title>
             </Head>
             <>
                 <div className="web-dev-post-header-container">
@@ -48,14 +52,18 @@ const WebDevPostDetail: NextPage<WebDevPostDetailProps> = ({ post }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const { slug } = context.query;
-    if (!slug || !slug[0]) {
+    const { pid } = context.query;
+    if (typeof pid !== 'string' || !pid) {
         return {
             notFound: true,
         };
     }
-    const postId = slug[0];
-    const post = await controller.getPost(postId);
+    const post = await controller.getPost(pid.substring(pid.lastIndexOf('-') + 1));
+    if (!post) {
+        return {
+            notFound: true,
+        };
+    }
     return {
         props: {
             post,
@@ -63,4 +71,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
 };
 
-export default WebDevPostDetail;
+export default PostList;

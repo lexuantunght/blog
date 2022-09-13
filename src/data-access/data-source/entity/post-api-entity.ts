@@ -1,4 +1,4 @@
-import { Category } from 'common/model';
+import { Mode } from 'common/model';
 
 export default interface PostAPIEntity {
     _id: string | number;
@@ -7,7 +7,7 @@ export default interface PostAPIEntity {
     description?: string;
     content: string;
     views: number;
-    mode?: string;
+    mode?: Mode;
     created_at: Date;
-    category: Category;
+    category: string;
 }
