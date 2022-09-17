@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from './header-bar.module.scss';
 import Button from 'common/ui/Button';
 import { FaBars } from 'react-icons/fa';
@@ -14,14 +15,14 @@ const HeaderBar = ({ menuItems = [] }: HeaderProps) => {
     return (
         <div className={styles.container}>
             <div className={`${styles.header} responsive`}>
-                <a href="/" className={styles.brand}>
-                    Blog of Tung
-                </a>
+                <Link href="/">
+                    <a className={styles.brand}>Blog of Tung</a>
+                </Link>
                 <div className={styles.menu}>
                     {menuItems.map((item, index) => (
-                        <a key={index} href={item.path}>
+                        <Link key={index} href={item.path}>
                             {item.label}
-                        </a>
+                        </Link>
                     ))}
                 </div>
                 <form className={styles.searchbox}>

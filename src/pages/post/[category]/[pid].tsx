@@ -26,8 +26,8 @@ const PostList: NextPage<PostListProps> = (props) => {
                 </title>
             </Head>
             <>
-                <div className="web-dev-post-header-container">
-                    <div className="responsive web-dev-post-header">
+                <div className="post-detail-header-container">
+                    <div className="responsive post-detail-header">
                         <div className="detail-post-info">
                             <div className="detail-post-title">{post.title}</div>
                             <div>

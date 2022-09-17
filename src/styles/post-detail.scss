@@ -1,7 +1,7 @@
-.web-dev-post-header-container {
+.post-detail-header-container {
     background-color: var(--gray-200);
 }
-.web-dev-post-header {
+.post-detail-header {
     padding-top: 2rem;
     padding-bottom: 2rem;
     display: grid;
@@ -32,4 +32,9 @@
 .detail-post-photos {
     width: 100%;
     aspect-ratio: 3/2;
+}
+pre {
+    background-color: var(--gray-200);
+    border-radius: var(--border-radius);
+    padding: 0.25rem 0.75rem;
 }
