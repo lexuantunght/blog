@@ -13,9 +13,17 @@ type DrawerProps = {
     onClose?: () => void;
     children: React.ReactNode;
     className?: string;
+    bodyClassName?: string;
 };
 
-const DrawerContent = ({ show, showClose = true, onClose, children, className }: DrawerProps) => {
+const DrawerContent = ({
+    show,
+    showClose = true,
+    onClose,
+    children,
+    className,
+    bodyClassName,
+}: DrawerProps) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const contentRef = React.useRef<HTMLDivElement>(null);
 
@@ -39,7 +47,9 @@ const DrawerContent = ({ show, showClose = true, onClose, children, className }:
                         <GrClose />
                     </Button>
                 )}
-                <div className={styles.body}>{children}</div>
+                <div className={combineClasses([true, styles.body], [true, bodyClassName])}>
+                    {children}
+                </div>
             </div>
         </div>
     );

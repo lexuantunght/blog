@@ -1,0 +1,13 @@
+.container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: max-content;
+    background-color: var(--background);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding-top: var(--padding-y);
+    padding-bottom: var(--padding-y);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--line-color);
+    z-index: 5;
+}

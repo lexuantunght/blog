@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+.toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.list {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    transition: height var(--transition-time);
+    overflow-y: hidden;
+}
+.indicator {
+    margin-left: 0.25rem;
+    transition: transform var(--transition-time);
+    &.expand {
+        transform: rotateZ(-90deg);
+    }
+}

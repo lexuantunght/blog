@@ -1,0 +1,18 @@
+.container {
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    background-color: var(--black-background);
+    color: var(--white-text);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 2;
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+}
+.container.show {
+    opacity: 1;
+}

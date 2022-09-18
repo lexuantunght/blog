@@ -7,11 +7,11 @@ import NetworkAdapter from './adapter';
 class HttpClient {
     constructor(private adapter: NetworkAdapter) {}
 
-    public get(path: string) {
+    public async get(path: string) {
         return this.adapter.get(`${AppConfig.baseURL}${path}`);
     }
 
-    public post(path: string, body: unknown) {
+    public async post(path: string, body: unknown) {
         return this.adapter.post(`${AppConfig.baseURL}${path}`, body).catch((err) => {
             if (err.response.data?.message) {
                 throw err.response.data.message;
@@ -20,11 +20,11 @@ class HttpClient {
         });
     }
 
-    public put(path: string, body: unknown) {
+    public async put(path: string, body: unknown) {
         return this.adapter.put(`${AppConfig.baseURL}${path}`, body);
     }
 
-    public delete(path: string) {
+    public async delete(path: string) {
         return this.adapter.delete(`${AppConfig.baseURL}${path}`);
     }
 }
