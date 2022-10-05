@@ -1,6 +1,7 @@
 import ModuleContainer from 'common/shared/module-container';
 import HttpClient from 'utils/network/http-client';
-import PostDataSource from 'data-access/data-source/post-data-source';
+import PostDataSource from 'data/data-source/post-data-source';
+import objectToQuery from 'common/helper/object-to-query';
 
 export const PostDataSourceName = 'PostDataSource';
 @ModuleContainer.injectable()
@@ -8,8 +9,10 @@ export const PostDataSourceName = 'PostDataSource';
 class PostDataSourceImpl implements PostDataSource {
     constructor(private httpClient: HttpClient) {}
 
-    public async getAll(page = 0, limit = 8) {
-        const response = await this.httpClient.get(`/post/getAll/${limit}/${page}`);
+    public async getAll(page = 0, limit = 8, params = {}) {
+        const response = await this.httpClient.get(
+            `/post/getAll/${limit}/${page}${objectToQuery(params)}`
+        );
         const { data } = response.data;
         return { posts: data.posts, pageCount: data.totalPages };
     }

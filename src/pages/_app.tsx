@@ -27,12 +27,11 @@ function App({ Component, pageProps }: AppProps) {
         };
     }, []);
 
-    return (
-        <>
-            {loading && <LoadingView className="app-loading-view" />}
-            <Component {...pageProps} />
-        </>
-    );
+    if (loading) {
+        return <LoadingView className="app-loading-view" />;
+    }
+
+    return <Component {...pageProps} />;
 }
 
 export default App;

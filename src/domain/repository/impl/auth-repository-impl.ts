@@ -1,6 +1,6 @@
 import ModuleContainer from 'common/shared/module-container';
-import type AuthDataSource from 'data-access/data-source/auth-data-source';
-import { AuthDataSourceName } from 'data-access/data-source/impl/auth-data-source-impl';
+import type AuthDataSource from 'data/data-source/auth-data-source';
+import { AuthDataSourceName } from 'data/data-source/impl/auth-data-source-impl';
 import AuthRepository from 'domain/repository/auth-repository';
 
 export const AuthRepositoryName = 'AuthRepository';

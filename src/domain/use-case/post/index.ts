@@ -12,6 +12,10 @@ class PostUseCase {
         return this.repository.getAll(0, 8);
     }
 
+    public getMostViews() {
+        return this.repository.getAll(0, 8, { mostViews: 'true' });
+    }
+
     public getAllPosts(page?: number, limit?: number) {
         return this.repository.getAll(page, limit);
     }

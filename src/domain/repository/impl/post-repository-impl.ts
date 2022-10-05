@@ -1,6 +1,6 @@
 import ModuleContainer from 'common/shared/module-container';
-import { PostDataSourceName } from 'data-access/data-source/impl/post-data-source-impl';
-import type PostDataSource from 'data-access/data-source/post-data-source';
+import { PostDataSourceName } from 'data/data-source/impl/post-data-source-impl';
+import type PostDataSource from 'data/data-source/post-data-source';
 import PostRepository from 'domain/repository/post-repository';
 
 export const PostRepositoryName = 'PostRepository';
@@ -10,8 +10,8 @@ export const PostRepositoryName = 'PostRepository';
 class PostRepositoryImpl implements PostRepository {
     constructor(@ModuleContainer.inject(PostDataSourceName) private dataSource: PostDataSource) {}
 
-    public getAll(page?: number, limit?: number) {
-        return this.dataSource.getAll(page, limit);
+    public getAll(page?: number, limit?: number, params?: Record<string, string>) {
+        return this.dataSource.getAll(page, limit, params);
     }
 
     public get(id: string | number) {

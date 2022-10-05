@@ -18,6 +18,7 @@ import AppEventType from 'common/event-type/app-event-type';
 
 type HomeProps = {
     data: { posts: Array<Post>; pageCount: number };
+    bannerUrl?: string;
 };
 
 const controller = ModuleContainer.resolve(HomeController);
@@ -53,7 +54,7 @@ const Home: NextPage<HomeProps> = (props) => {
                 <title>Blog of Tung</title>
             </Head>
             <>
-                <div className="home-banner-container">
+                <div className="home-banner-container" style={{ backgroundImage: props.bannerUrl }}>
                     <div className="responsive home-banner">
                         <div className="home-banner-title">Welcome to my blog</div>
                         <div className="home-banner-slogan">
@@ -80,6 +81,23 @@ const Home: NextPage<HomeProps> = (props) => {
                 </div>
                 <div className="responsive">
                     <div className="home-title">Recent posts</div>
+                    <div className="home-recent-posts">
+                        {posts.map((post: Post) => (
+                            <PostItem
+                                key={post._id}
+                                imageURL={post.photos[0].url}
+                                title={post.title}
+                                category={post.category}
+                                views={post.views}
+                                created_at={post.created_at}
+                                onClick={() => onClickPostItem(post)}
+                            />
+                        ))}
+                    </div>
+                    <div className="home-recent-posts-pagination">
+                        <Pagination pageCount={pageCount} page={0} />
+                    </div>
+                    <div className="home-title">Most views</div>
                     <div className="home-recent-posts">
                         {posts.map((post: Post) => (
                             <PostItem

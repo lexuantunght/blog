@@ -1,6 +1,6 @@
 import ModuleContainer from 'common/shared/module-container';
 import HttpClient from 'utils/network/http-client';
-import UserDataSource from 'data-access/data-source/user-data-source';
+import UserDataSource from 'data/data-source/user-data-source';
 
 export const UserDataSourceName = 'UserDataSource';
 @ModuleContainer.injectable()

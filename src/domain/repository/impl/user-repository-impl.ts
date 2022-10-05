@@ -1,6 +1,6 @@
 import ModuleContainer from 'common/shared/module-container';
-import type UserDataSource from 'data-access/data-source/user-data-source';
-import { UserDataSourceName } from 'data-access/data-source/impl/user-data-source-impl';
+import type UserDataSource from 'data/data-source/user-data-source';
+import { UserDataSourceName } from 'data/data-source/impl/user-data-source-impl';
 import UserRepository from 'domain/repository/user-repository';
 
 export const UserRepositoryName = 'UserRepository';
