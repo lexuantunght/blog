@@ -37,9 +37,6 @@ class UserController {
             password: bcrypt.hashSync(req.body.password, 8),
         });
         const data = await user.save();
-        if (req.body.roleId) {
-            await this.roleRepo.addUser(data._id, req.body.roleId);
-        }
         return res.send({ status: 'success', message: 'Đăng ký tài khoản thành công', data });
     }
 
@@ -89,7 +86,7 @@ class UserController {
             });
     }
 
-    signout(req, res) {
+    logout(req, res) {
         return res
             .cookie('x-access-token', '', {
                 maxAge: 0,
@@ -115,7 +112,7 @@ class UserController {
         }
         return res
             .status(404)
-            .send({ status: 'fail', message: 'Not found user', errorCode: ErrorCode.NOT_FOUND });
+            .send({ status: 'fail', message: 'Not found user', errorCode: 'not_found' });
     }
 
     async updatePassword(req, res) {
