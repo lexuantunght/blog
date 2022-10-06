@@ -1,4 +1,4 @@
-import DB from 'backend/data/database';
+const DB = require('backend/data/database');
 
 class RoleRepository {
     async addUser(userId, roleId) {
@@ -15,4 +15,4 @@ class RoleRepository {
     }
 }
 
-export default RoleRepository;
+module.exports = RoleRepository;

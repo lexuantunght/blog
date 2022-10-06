@@ -2,4 +2,4 @@ const config = {
     secret: 'helloworld-xuantung-hahaha',
 };
 
-export default config;
+module.exports = config;

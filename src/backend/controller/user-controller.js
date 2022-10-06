@@ -1,13 +1,15 @@
-import User from 'backend/data/model/user';
-import UserRepository from 'backend/repository/user-repository';
-import RoleRepository from 'backend/repository/role-repository';
-import fs from 'fs';
-import path from 'path';
-import bcrypt from 'bcryptjs';
-import config from 'backend/config';
-import cloud from 'backend/utils/cloud';
-import setValuableField from 'backend/utils/helper/set-valuable-field';
-import getNextId from 'backend/utils/helper/get-next-id';
+const User = require('backend/data/model/user');
+const UserRepository = require('backend/repository/user-repository');
+const RoleRepository = require('backend/repository/role-repository');
+const fs = require('fs');
+const path = require('path');
+const bcrypt = require('bcryptjs');
+const config = require('backend/config');
+const cloud = require('backend/utils/cloud');
+const jwt = require('jsonwebtoken');
+const setValuableField = require('backend/utils/helper/set-valuable-field');
+const getNextId = require('backend/utils/helper/get-next-id');
+const setCookie = require('backend/utils/helper/set-cookie');
 
 class UserController {
     constructor() {
@@ -58,32 +60,30 @@ class UserController {
                 errorCode: 'incorrect_payload',
             });
         }
-        const role = await this.roleRepo.getRole(req.userId);
-        const token = jwt.sign({ id: user.id }, config.secret, {
+        const role = await this.roleRepo.getRole(user._id);
+        const token = jwt.sign({ id: user._id }, config.secret, {
             expiresIn: 86400 * 7 * 1000, // 7 days
         });
-        return res
-            .cookie('x-access-token', token, {
-                maxAge: 86400 * 7 * 1000,
-                sameSite: 'none',
-                secure: true,
-                httpOnly: true,
-            })
-            .status(200)
-            .send({
-                status: 'success',
-                data: {
-                    _id: user._id,
-                    phoneNumber: user.phoneNumber,
-                    username: user.username,
-                    name: user.name,
-                    avatar: user.avatar,
-                    dob: user.dob,
-                    role,
-                    address: user.address,
-                    accessToken: token,
-                },
-            });
+        setCookie(res, 'x-access-token', token, {
+            maxAge: 86400 * 7 * 1000,
+            sameSite: 'none',
+            secure: true,
+            httpOnly: true,
+        });
+        return res.status(200).send({
+            status: 'success',
+            data: {
+                _id: user._id,
+                phoneNumber: user.phoneNumber,
+                username: user.username,
+                name: user.name,
+                avatar: user.avatar,
+                dob: user.dob,
+                role,
+                address: user.address,
+                accessToken: token,
+            },
+        });
     }
 
     logout(req, res) {
@@ -149,5 +149,4 @@ class UserController {
     }
 }
 
-const _userController = new UserController();
-export default _userController;
+module.exports = new UserController();

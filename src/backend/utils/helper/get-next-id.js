@@ -1,5 +1,5 @@
-import DB from 'backend/data/database';
-import Counter from 'backend/data/model/_counter';
+const DB = require('backend/data/database');
+const Counter = require('backend/data/model/_counter');
 
 const getNextId = async (name) => {
     const ret = await DB.Counter.findOneAndUpdate(
@@ -15,4 +15,4 @@ const getNextId = async (name) => {
     return ret.seq;
 };
 
-export default getNextId;
+module.exports = getNextId;

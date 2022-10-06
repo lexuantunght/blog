@@ -1,5 +1,5 @@
-import Role from 'backend/data/model/role';
-import getNextId from 'backend/utils/helper/get-next-id';
+const Role = require('backend/data/model/role');
+const getNextId = require('backend/utils/helper/get-next-id');
 
 class AdminController {
     constructor() {}
@@ -11,5 +11,4 @@ class AdminController {
     }
 }
 
-const _adminController = new AdminController();
-export default _adminController;
+module.exports = new AdminController();

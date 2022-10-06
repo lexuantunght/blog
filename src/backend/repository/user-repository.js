@@ -1,4 +1,4 @@
-import DB from 'backend/data/database';
+const DB = require('backend/data/database');
 
 class UserRepository {
     async checkExist(data) {
@@ -13,4 +13,4 @@ class UserRepository {
     }
 }
 
-export default UserRepository;
+module.exports = UserRepository;

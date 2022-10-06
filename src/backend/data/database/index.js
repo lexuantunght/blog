@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
-import Counter from 'backend/data/model/_counter';
-import Role from 'backend/data/model/role';
-import User from 'backend/data/model/user';
+const mongoose = require('mongoose');
+const Counter = require('backend/data/model/_counter');
+const Role = require('backend/data/model/role');
+const User = require('backend/data/model/user');
 
 mongoose.Promise = global.Promise;
 
@@ -32,4 +32,4 @@ const DB = {
     User,
 };
 
-export default DB;
+module.exports = DB;

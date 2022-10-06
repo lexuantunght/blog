@@ -13,4 +13,4 @@ const setValuableField = (obj, path, value) => {
     return obj;
 };
 
-export default setValuableField;
+module.exports = setValuableField;

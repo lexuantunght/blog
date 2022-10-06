@@ -1,5 +1,5 @@
-import cloudinary from 'cloudinary';
-import path from 'path';
+const cloudinary = require('cloudinary');
+const path = require('path');
 
 cloudinary.v2.config({
     cloud_name: 'dwb0yer6d',
@@ -8,7 +8,7 @@ cloudinary.v2.config({
     secure: true,
 });
 
-export const uploads = (file, folder) => {
+const uploads = (file, folder) => {
     return new Promise((resolve) => {
         cloudinary.v2.uploader.upload(
             file.path,
@@ -27,15 +27,15 @@ export const uploads = (file, folder) => {
     });
 };
 
-export const removeById = (public_id) => {
+const removeById = (public_id) => {
     cloudinary.v2.uploader.destroy(public_id);
 };
 
-export const removeByUrl = (fileUrl, folder) => {
+const removeByUrl = (fileUrl, folder) => {
     if (!fileUrl) return;
     const image = fileUrl.substring(fileUrl.lastIndexOf('/'), fileUrl.lastIndexOf('.'));
     cloudinary.v2.uploader.destroy('Salley' + folder + image);
 };
 
 const cloud = { uploads, removeById, removeByUrl };
-export default cloud;
+module.exports = cloud;
