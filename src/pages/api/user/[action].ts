@@ -3,8 +3,8 @@ import UserController from 'backend/controller/user-controller';
 import upload from 'backend/utils/upload';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-    const { pid } = req.query;
-    switch (pid) {
+    const { action } = req.query;
+    switch (action) {
         case 'login':
             if (req.method === 'POST') {
                 return UserController.login(req, res);

@@ -10,7 +10,7 @@ class RoleRepository {
         await role.save();
     }
     async getRole(userId) {
-        const role = await DB.Role.findOne({ userIds: { $elemMatch: userId } });
+        const role = await DB.Role.findOne({ userIds: { $elemMatch: { $eq: userId } } });
         return role;
     }
 }
