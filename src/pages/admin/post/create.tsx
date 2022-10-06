@@ -50,7 +50,7 @@ const CreatePost: NextPage<CreatePostProps> = (props) => {
         <AdminPageLayout className="ad-page-container custom-scroll scrolling">
             <div className="ad-page-title">Post dashboard &gt; Create</div>
             <form className="flex-col mt-4" onSubmit={formik.handleSubmit}>
-                <label htmlFor="title" className="mb-1">
+                <label htmlFor="title" className="mb-1 w-fit">
                     Title
                 </label>
                 <TextInput
@@ -63,7 +63,7 @@ const CreatePost: NextPage<CreatePostProps> = (props) => {
                     invalid={!!(formik.touched.title && formik.errors.title)}
                     errorText={formik.errors.title}
                 />
-                <label htmlFor="category" className="mt-4 mb-1">
+                <label htmlFor="category" className="mt-4 mb-1 w-fit">
                     Category
                 </label>
                 <Dropdown
@@ -73,7 +73,7 @@ const CreatePost: NextPage<CreatePostProps> = (props) => {
                     value={formik.values.category}
                     onChange={(value) => formik.setFieldValue('category', value)}
                 />
-                <label htmlFor="mode" className="mt-4 mb-1">
+                <label htmlFor="mode" className="mt-4 mb-1 w-fit">
                     Mode
                 </label>
                 <Dropdown
@@ -83,14 +83,14 @@ const CreatePost: NextPage<CreatePostProps> = (props) => {
                     value={formik.values.mode}
                     onChange={(value) => formik.setFieldValue('mode', value)}
                 />
-                <label htmlFor="photos" className="mt-4 mb-1">
+                <label htmlFor="photos" className="mt-4 mb-1 w-fit">
                     Attach photos
                 </label>
                 <ImageUploader
                     id="photos"
                     onChange={(images) => formik.setFieldValue('photos', images)}
                 />
-                <label htmlFor="content" className="mt-4 mb-1">
+                <label htmlFor="content" className="mt-4 mb-1 w-fit">
                     Content
                 </label>
                 <TextEditor
