@@ -102,9 +102,10 @@ class UserController {
         const user = await this.userRepo.getOne({ _id: req.userId });
         if (user) {
             const role = await this.roleRepo.getRole(req.userId);
+            user._doc.role = role.name;
             return res.status(200).send({
                 status: 'success',
-                data: { ...user, role },
+                data: user,
             });
         }
         return res

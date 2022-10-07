@@ -1,5 +1,5 @@
 const AppConfig = {
-    baseURL: 'https://blog-back-g6h0.onrender.com',
+    baseURL: 'http://localhost:3001/api',
     modes: ['Private', 'Public'] as const,
 };
 

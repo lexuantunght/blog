@@ -9,7 +9,7 @@ class AuthDataSourceImpl implements AuthDataSource {
     constructor(private httpClient: HttpClient) {}
 
     public async login(username: string, password: string) {
-        const response = await this.httpClient.post('/user/signin', { username, password });
+        const response = await this.httpClient.post('/user/login', { username, password });
         const { data } = response.data;
         return data;
     }
@@ -21,7 +21,7 @@ class AuthDataSourceImpl implements AuthDataSource {
     }
 
     public async logout() {
-        await this.httpClient.get('/user/signout');
+        await this.httpClient.get('/user/logout');
         return true;
     }
 }

@@ -1,6 +1,5 @@
 import ModuleContainer from 'common/shared/module-container';
 import BaseController from 'controller/base-controller';
-import PostCreation from 'domain/model/post-creation';
 import PostUseCase from 'domain/use-case/post';
 
 @ModuleContainer.injectable()
@@ -21,7 +20,7 @@ class PostController extends BaseController {
         return this.postUC.getCategories();
     }
 
-    public createPost(post: PostCreation) {
+    public createPost(post: FormData) {
         return this.postUC.createPost(post);
     }
 }

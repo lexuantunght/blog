@@ -17,6 +17,22 @@ class PostDataSourceImpl implements PostDataSource {
         return { posts: data.posts, pageCount: data.totalPages };
     }
 
+    public async getRecent(page = 0, limit = 8) {
+        const response = await this.httpClient.get(
+            `/post/recent?${objectToQuery({ page, limit })}`
+        );
+        const { data } = response.data;
+        return data;
+    }
+
+    public async getMostViews(page = 0, limit = 8) {
+        const response = await this.httpClient.get(
+            `/post/most-views?${objectToQuery({ page, limit })}`
+        );
+        const { data } = response.data;
+        return data;
+    }
+
     public async get(id: string | number) {
         const response = await this.httpClient.get(`/post/get/${id}`);
         const { data } = response.data;

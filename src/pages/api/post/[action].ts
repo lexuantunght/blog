@@ -17,9 +17,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             }
         case 'recent':
             if (req.method === 'GET') {
+                return PostController.getLatestPosts(req, res);
             }
         case 'most-views':
             if (req.method === 'GET') {
+                return PostController.getMostViewsPosts(req, res);
             }
         default:
             return res.status(404).json({ status: 'fail', message: 'Not found' });

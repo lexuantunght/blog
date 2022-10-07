@@ -14,6 +14,14 @@ class PostRepositoryImpl implements PostRepository {
         return this.dataSource.getAll(page, limit, params);
     }
 
+    public getRecent(page?: number, limit?: number) {
+        return this.dataSource.getRecent(page, limit);
+    }
+
+    public getMostViews(page?: number, limit?: number) {
+        return this.dataSource.getMostViews(page, limit);
+    }
+
     public get(id: string | number) {
         return this.dataSource.get(id);
     }

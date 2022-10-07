@@ -32,10 +32,24 @@ class PostController {
     }
 
     async getAllPosts(req, res) {
-        const limit = parseInt(req.query.limit) || 5;
-        const page = parseInt(req.query.page) || 0;
+        const limit = parseInt(req.query.limit);
+        const page = parseInt(req.query.page);
         const query = { mode: 'Public' };
         const posts = await this.postRepo.getAll(page, limit, query);
+        return res.send({ status: 'success', data: posts });
+    }
+
+    async getLatestPosts(req, res) {
+        const limit = parseInt(req.query.limit);
+        const page = parseInt(req.query.page);
+        const posts = await this.postRepo.getLatestPosts(page, limit);
+        return res.send({ status: 'success', data: posts });
+    }
+
+    async getMostViewsPosts(req, res) {
+        const limit = parseInt(req.query.limit);
+        const page = parseInt(req.query.page);
+        const posts = await this.postRepo.getMostViewsPosts(page, limit);
         return res.send({ status: 'success', data: posts });
     }
 }

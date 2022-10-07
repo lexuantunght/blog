@@ -7,7 +7,6 @@ import PageLayout from 'common/layout';
 import TextInput from 'common/ui/TextInput';
 import Button from 'common/ui/Button';
 import PostItem from 'common/widget/post-item';
-import Pagination from 'common/ui/Pagination';
 import ModuleContainer from 'common/shared/module-container';
 import HomeController from 'controller/home/home-controller';
 import toNormalizePath from 'common/helper/to-normalize-path';
@@ -17,7 +16,8 @@ import Emitter from 'utils/event-manager/emitter';
 import AppEventType from 'common/event-type/app-event-type';
 
 type HomeProps = {
-    data: { posts: Array<Post>; pageCount: number };
+    recentPosts: Array<Post>;
+    mostViewsPosts: Array<Post>;
     bannerUrl?: string;
 };
 
@@ -26,7 +26,7 @@ const emitter = ModuleContainer.resolve(Emitter);
 
 const Home: NextPage<HomeProps> = (props) => {
     const router = useRouter();
-    const { posts = [], pageCount } = props.data;
+    const { recentPosts = [], mostViewsPosts = [] } = props;
 
     const formik = useFormik({
         initialValues: {
@@ -82,7 +82,7 @@ const Home: NextPage<HomeProps> = (props) => {
                 <div className="responsive">
                     <div className="home-title">Recent posts</div>
                     <div className="home-recent-posts">
-                        {posts.map((post: Post) => (
+                        {recentPosts.map((post: Post) => (
                             <PostItem
                                 key={post._id}
                                 imageURL={post.photos[0].url}
@@ -93,13 +93,10 @@ const Home: NextPage<HomeProps> = (props) => {
                                 onClick={() => onClickPostItem(post)}
                             />
                         ))}
-                    </div>
-                    <div className="home-recent-posts-pagination">
-                        <Pagination pageCount={pageCount} page={0} />
                     </div>
                     <div className="home-title">Most views</div>
                     <div className="home-recent-posts">
-                        {posts.map((post: Post) => (
+                        {mostViewsPosts.map((post: Post) => (
                             <PostItem
                                 key={post._id}
                                 imageURL={post.photos[0].url}
@@ -110,9 +107,6 @@ const Home: NextPage<HomeProps> = (props) => {
                                 onClick={() => onClickPostItem(post)}
                             />
                         ))}
-                    </div>
-                    <div className="home-recent-posts-pagination">
-                        <Pagination pageCount={pageCount} page={0} />
                     </div>
                 </div>
             </>
@@ -121,10 +115,12 @@ const Home: NextPage<HomeProps> = (props) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const data = await controller.getRecentPosts();
+    const recentPosts = await controller.getRecentPosts();
+    const mostViewsPosts = await controller.getRecentPosts();
     return {
         props: {
-            data,
+            recentPosts,
+            mostViewsPosts,
         },
     };
 };

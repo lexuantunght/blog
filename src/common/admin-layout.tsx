@@ -94,7 +94,7 @@ const AdminPageLayout = ({ children, className }: AdminPageLayoutProps) => {
             <main className="flex">
                 {userData && (
                     <SideBar
-                        avatar={userData.avatar?.url}
+                        avatar={userData.avatar}
                         name={userData.name}
                         menuItems={SideBarConfig.menuItems}
                         coreItems={coreItems}

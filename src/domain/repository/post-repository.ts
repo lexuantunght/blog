@@ -7,6 +7,8 @@ export default interface PostRepository {
         limit?: number,
         params?: Record<string, string>
     ) => Promise<{ posts: Array<Post>; pageCount: number }>;
+    getRecent: (page?: number, limit?: number) => Promise<Array<Post>>;
+    getMostViews: (page?: number, limit?: number) => Promise<Array<Post>>;
     get: (id: string | number) => Promise<Post>;
     getCategories: () => Promise<Array<Category>>;
     create: (data: FormData) => Promise<void>;
