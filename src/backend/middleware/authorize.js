@@ -1,8 +1,14 @@
 const jwt = require('jsonwebtoken');
 const config = require('backend/config');
-const roleRepo = require('backend/repository/role-repository');
+const RoleRepository = require('backend/repository/role-repository');
+const UserRepository = require('backend/repository/user-repository');
 
 class Authorize {
+    constructor() {
+        this.roleRepo = new RoleRepository();
+        this.userRepo = new UserRepository();
+    }
+
     _getUidFromToken(req) {
         return new Promise((resolve, reject) => {
             const token = req.cookies['x-access-token'];
@@ -39,7 +45,7 @@ class Authorize {
         return new Promise((resolve, reject) => {
             this._getUidFromToken(req)
                 .then(async (uid) => {
-                    const role = await roleRepo.getRole(uid);
+                    const role = await this.roleRepo.getRole(uid);
                     if (role === _role) {
                         req.userId = uid;
                         resolve(uid);

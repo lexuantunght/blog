@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const PostSchema = new Schema(
     {
+        _id: Number,
         title: String,
         author: String,
         photos: Array,
@@ -13,8 +14,8 @@ const PostSchema = new Schema(
     },
     {
         timestamps: {
-            createdAt: 'created_at',
-            updatedAt: 'updated_at',
+            createdAt: 'createdAt',
+            updatedAt: 'updatedAt',
         },
     }
 );

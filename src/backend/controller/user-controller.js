@@ -86,18 +86,16 @@ class UserController {
     }
 
     logout(req, res) {
-        return res
-            .cookie('x-access-token', '', {
-                maxAge: 0,
-                sameSite: 'none',
-                secure: true,
-                httpOnly: true,
-            })
-            .status(200)
-            .send({
-                status: 'success',
-                message: 'Logout successfully!',
-            });
+        setCookie(res, 'x-access-token', '', {
+            maxAge: 0,
+            sameSite: 'none',
+            secure: true,
+            httpOnly: true,
+        });
+        return res.status(200).send({
+            status: 'success',
+            message: 'Logout successfully!',
+        });
     }
 
     async current(req, res) {

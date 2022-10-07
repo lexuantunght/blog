@@ -14,7 +14,7 @@ const uploads = (file, folder) => {
             file.path,
             {
                 resource_type: 'auto',
-                folder: 'Salley' + folder,
+                folder: 'Blog' + folder,
                 public_id: path.parse(file.filename).name,
             },
             (err, result) => {
@@ -34,7 +34,7 @@ const removeById = (public_id) => {
 const removeByUrl = (fileUrl, folder) => {
     if (!fileUrl) return;
     const image = fileUrl.substring(fileUrl.lastIndexOf('/'), fileUrl.lastIndexOf('.'));
-    cloudinary.v2.uploader.destroy('Salley' + folder + image);
+    cloudinary.v2.uploader.destroy('Blog' + folder + image);
 };
 
 const cloud = { uploads, removeById, removeByUrl };
