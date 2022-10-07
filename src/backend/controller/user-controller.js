@@ -79,9 +79,8 @@ class UserController {
                 name: user.name,
                 avatar: user.avatar,
                 dob: user.dob,
-                role,
+                role: role.name,
                 address: user.address,
-                accessToken: token,
             },
         });
     }
