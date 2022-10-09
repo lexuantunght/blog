@@ -1,9 +1,9 @@
 import { Mode } from 'common/model';
 
 export default interface PostAPIEntity {
-    _id: string | number;
+    _id: number;
     title?: string;
-    photos: Array<{ url: string; id: string }>;
+    photos: Array<string>;
     description?: string;
     content: string;
     views: number;

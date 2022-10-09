@@ -6,14 +6,14 @@ import { IoCalendar, IoPricetag } from 'react-icons/io5';
 import PageLayout from 'common/layout';
 import Post from 'domain/model/post';
 import ModuleContainer from 'common/shared/module-container';
-import PostController from 'controller/post/post-controller';
+import PostController from 'controller/post-controller';
 import Carousel from 'common/ui/Carousel';
 
 type PostListProps = {
     post: Post;
 };
 
-const controller = ModuleContainer.resolve(PostController);
+const postController = ModuleContainer.resolve(PostController);
 
 const PostList: NextPage<PostListProps> = (props) => {
     const { post } = props;
@@ -39,10 +39,7 @@ const PostList: NextPage<PostListProps> = (props) => {
                                 <span>{post.category}</span>
                             </div>
                         </div>
-                        <Carousel
-                            className="detail-post-photos"
-                            photos={post.photos.map((p) => p.url)}
-                        />
+                        <Carousel className="detail-post-photos" photos={post.photos} />
                     </div>
                 </div>
                 <div className="responsive">{parse(post.content)}</div>
@@ -58,7 +55,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             notFound: true,
         };
     }
-    const post = await controller.getPost(pid.substring(pid.lastIndexOf('-') + 1));
+    const post = await postController.getPost(Number(pid.substring(pid.lastIndexOf('-') + 1)));
     if (!post) {
         return {
             notFound: true,

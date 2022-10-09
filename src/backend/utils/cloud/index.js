@@ -9,17 +9,18 @@ cloudinary.v2.config({
 });
 
 const uploads = (file, folder) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         cloudinary.v2.uploader.upload(
-            file.path,
+            file.filepath,
             {
                 resource_type: 'auto',
                 folder: 'Blog' + folder,
-                public_id: path.parse(file.filename).name,
+                public_id: path.parse(file.filepath).name,
             },
             (err, result) => {
                 if (err) {
                     console.log(err);
+                    reject({ errorCode: 400, message: err });
                 }
                 resolve(result.secure_url);
             }

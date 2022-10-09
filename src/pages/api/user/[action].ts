@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import UserController from 'backend/controller/user-controller';
-import upload from 'backend/utils/upload';
 import Authorize from 'backend/middleware/authorize';
+import upload from 'backend/utils/upload';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { action } = req.query;
@@ -12,9 +12,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             }
         case 'register':
             if (req.method === 'POST') {
-                return upload
-                    .single('avatar')(req, res)
-                    .then(() => UserController.register(req, res));
+                return upload(req)
+                    .then(() => UserController.register(req, res))
+                    .catch(({ errorCode, message }) =>
+                        res.status(errorCode).json({ status: 'fail', message })
+                    );
             }
         case 'current':
             if (req.method === 'GET') {
@@ -27,6 +29,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         case 'update-info':
             if (req.method === 'PUT') {
                 return Authorize.verifyToken(req, res)
+                    .then(() => upload(req))
                     .then(() => UserController.updateInfo(req, res))
                     .catch(({ errorCode, message }) =>
                         res.status(errorCode).json({ status: 'fail', message })

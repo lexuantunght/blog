@@ -28,6 +28,11 @@ class PostRepository {
             .limit(limit);
         return posts;
     }
+
+    async countPosts(query = {}) {
+        const count = await DB.Post.countDocuments(query);
+        return count;
+    }
 }
 
 module.exports = PostRepository;

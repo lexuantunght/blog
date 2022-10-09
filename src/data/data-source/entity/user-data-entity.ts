@@ -1,7 +1,7 @@
 export default interface UserDataAPIEntity {
-    _id: string | number;
+    _id: number;
     name: string;
-    avatar?: { url: string; id: string };
+    avatar?: string;
     username: string;
     email: string;
     cv?: string;

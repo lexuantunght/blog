@@ -1,4 +1,4 @@
 export default interface CategoryAPIEntity {
-    _id: string | number;
+    _id: number;
     name: string;
 }

@@ -8,19 +8,19 @@ import { IoLogIn } from 'react-icons/io5';
 import TextInput from 'common/ui/TextInput';
 import Button from 'common/ui/Button';
 import ModuleContainer from 'common/shared/module-container';
-import AuthController from 'controller/authentication/auth-controller';
+import AuthController from 'controller/auth-controller';
 import Emitter from 'utils/event-manager/emitter';
 import useEventListener from 'utils/event-manager/use-event-listener';
 import Loader from 'common/ui/Loader';
 
-const controller = ModuleContainer.resolve(AuthController);
+const authController = ModuleContainer.resolve(AuthController);
 const emitter = ModuleContainer.resolve(Emitter);
 
 const Login: NextPage = () => {
     const router = useRouter();
     const [errorLoginText, setErrorLoginText] = React.useState('');
     useEventListener(emitter, {
-        type: controller.getEventType().LOGIN_FAILED,
+        type: authController.getEventType().LOGIN_FAILED,
         callback: (message: string) => setErrorLoginText(message),
     });
     const formik = useFormik({
@@ -33,7 +33,7 @@ const Login: NextPage = () => {
             password: Yup.string().min(6).max(64).required(),
         }),
         onSubmit: async (values) => {
-            const data = await controller.login(values.username, values.password);
+            const data = await authController.login(values.username, values.password);
             if (data) {
                 router.replace('/admin');
             }

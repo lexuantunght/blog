@@ -20,8 +20,8 @@ class UserController {
     async register(req, res) {
         const existed = await this.userRepo.checkExist(req.body);
         if (existed) {
-            if (req.file) {
-                fs.unlinkSync(path.join(__dirname + '/../../uploads/' + req.file.filename));
+            if (req.files?.avatar) {
+                fs.unlinkSync(req.files.avatar.filepath);
             }
             return res.status(400).send({
                 status: 'fail',
@@ -29,9 +29,9 @@ class UserController {
                 errorCode: 'existed_account',
             });
         }
-        if (req.file) {
-            req.body.avatar = await cloud.uploads(req.file, '/Avatar');
-            fs.unlinkSync(req.file.path);
+        if (req.files?.avatar) {
+            req.body.avatar = await cloud.uploads(req.file.avatar, '/Avatar');
+            fs.unlinkSync(req.file.avatar.filepath);
         }
         const user = new User({
             _id: await getNextId('users'),
@@ -61,14 +61,13 @@ class UserController {
             });
         }
         const role = await this.roleRepo.getRole(user._id);
-        const token = jwt.sign({ id: user._id }, config.secret, {
-            expiresIn: 86400 * 7 * 1000, // 7 days
-        });
+        const token = jwt.sign({ id: user._id }, config.secret);
         setCookie(res, 'x-access-token', token, {
-            maxAge: 86400 * 7 * 1000,
+            maxAge: 24 * 60 * 60 * 7,
             sameSite: 'none',
             secure: true,
             httpOnly: true,
+            path: '/',
         });
         return res.status(200).send({
             status: 'success',
@@ -91,6 +90,7 @@ class UserController {
             sameSite: 'none',
             secure: true,
             httpOnly: true,
+            path: '/',
         });
         return res.status(200).send({
             status: 'success',
@@ -137,10 +137,10 @@ class UserController {
             ['name', 'email', 'dob', 'address'],
             [req.body.name, req.body.email, req.body.dob, req.body.address]
         );
-        if (req.file) {
+        if (req.files?.avatar) {
             if (user.avatar) cloud.removeByUrl(user.avatar, '/Avatar');
-            user.avatar = await cloud.uploads(req.file.path, '/Avatar');
-            fs.unlinkSync(req.file.path);
+            user.avatar = await cloud.uploads(req.files.avatar, '/Avatar');
+            fs.unlinkSync(req.files.avatar.filepath);
         }
         await user.save();
         return res.send({ status: 'success', message: 'Change info successfully' });

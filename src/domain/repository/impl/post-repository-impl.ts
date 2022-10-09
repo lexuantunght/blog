@@ -22,7 +22,7 @@ class PostRepositoryImpl implements PostRepository {
         return this.dataSource.getMostViews(page, limit);
     }
 
-    public get(id: string | number) {
+    public get(id: number) {
         return this.dataSource.get(id);
     }
 

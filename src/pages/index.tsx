@@ -8,12 +8,13 @@ import TextInput from 'common/ui/TextInput';
 import Button from 'common/ui/Button';
 import PostItem from 'common/widget/post-item';
 import ModuleContainer from 'common/shared/module-container';
-import HomeController from 'controller/home/home-controller';
 import toNormalizePath from 'common/helper/to-normalize-path';
 import Loader from 'common/ui/Loader';
 import Post from 'domain/model/post';
 import Emitter from 'utils/event-manager/emitter';
 import AppEventType from 'common/event-type/app-event-type';
+import PostController from 'controller/post-controller';
+import UserController from 'controller/user-controller';
 
 type HomeProps = {
     recentPosts: Array<Post>;
@@ -21,7 +22,8 @@ type HomeProps = {
     bannerUrl?: string;
 };
 
-const controller = ModuleContainer.resolve(HomeController);
+const postController = ModuleContainer.resolve(PostController);
+const userController = ModuleContainer.resolve(UserController);
 const emitter = ModuleContainer.resolve(Emitter);
 
 const Home: NextPage<HomeProps> = (props) => {
@@ -36,7 +38,7 @@ const Home: NextPage<HomeProps> = (props) => {
             email: Yup.string().email().required(),
         }),
         onSubmit: async (values) => {
-            await controller.subscribeBlog(values.email).then((msg) => {
+            await userController.subscribeBlog(values.email).then((msg) => {
                 emitter.emit(AppEventType.SHOW_TOAST, msg);
             });
         },
@@ -85,7 +87,7 @@ const Home: NextPage<HomeProps> = (props) => {
                         {recentPosts.map((post: Post) => (
                             <PostItem
                                 key={post._id}
-                                imageURL={post.photos[0].url}
+                                imageURL={post.photos[0]}
                                 title={post.title}
                                 category={post.category}
                                 views={post.views}
@@ -95,11 +97,11 @@ const Home: NextPage<HomeProps> = (props) => {
                         ))}
                     </div>
                     <div className="home-title">Most views</div>
-                    <div className="home-recent-posts">
+                    <div className="home-recent-posts mb-8">
                         {mostViewsPosts.map((post: Post) => (
                             <PostItem
                                 key={post._id}
-                                imageURL={post.photos[0].url}
+                                imageURL={post.photos[0]}
                                 title={post.title}
                                 category={post.category}
                                 views={post.views}
@@ -115,8 +117,8 @@ const Home: NextPage<HomeProps> = (props) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const recentPosts = await controller.getRecentPosts();
-    const mostViewsPosts = await controller.getRecentPosts();
+    const recentPosts = await postController.getRecentPosts();
+    const mostViewsPosts = await postController.getRecentPosts();
     return {
         props: {
             recentPosts,

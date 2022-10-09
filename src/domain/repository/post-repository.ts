@@ -6,10 +6,10 @@ export default interface PostRepository {
         page?: number,
         limit?: number,
         params?: Record<string, string>
-    ) => Promise<{ posts: Array<Post>; pageCount: number }>;
+    ) => Promise<{ posts: Array<Post>; count: number }>;
     getRecent: (page?: number, limit?: number) => Promise<Array<Post>>;
     getMostViews: (page?: number, limit?: number) => Promise<Array<Post>>;
-    get: (id: string | number) => Promise<Post>;
+    get: (id: number) => Promise<Post>;
     getCategories: () => Promise<Array<Category>>;
     create: (data: FormData) => Promise<void>;
 }

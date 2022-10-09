@@ -18,7 +18,7 @@ class PostUseCase {
         return this.repository.getAll(page, limit);
     }
 
-    public getPost(postId: string | number) {
+    public getPost(postId: number) {
         return this.repository.get(postId);
     }
 

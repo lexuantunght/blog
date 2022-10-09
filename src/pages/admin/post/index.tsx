@@ -5,22 +5,22 @@ import { TbEdit, TbTrash } from 'react-icons/tb';
 import AdminPageLayout from 'common/admin-layout';
 import Button from 'common/ui/Button';
 import ModuleContainer from 'common/shared/module-container';
-import PostController from 'controller/post/post-controller';
-import Post from 'domain/model/post';
+import PostController from 'controller/post-controller';
 import moment from 'moment';
+import useSWR from 'swr';
+import LoadingView from 'common/widget/loading-view';
 
-const controller = ModuleContainer.resolve(PostController);
+const postController = ModuleContainer.resolve(PostController);
 
-type PostDashboardProps = {
-    data: {
-        posts: Post[];
-        pageCount: number;
-    };
-};
+const FETCH_POSTS_KEY = 'FETCH_POSTS';
 
-const PostDashboard: NextPage<PostDashboardProps> = (props) => {
+const PostDashboard: NextPage = () => {
     const router = useRouter();
-    const { data } = props;
+    const { data } = useSWR(FETCH_POSTS_KEY, () => postController.getAllPosts(0, 10));
+
+    if (!data) {
+        return <LoadingView className="h-screen" />;
+    }
 
     return (
         <AdminPageLayout className="ad-page-container">
@@ -68,15 +68,6 @@ const PostDashboard: NextPage<PostDashboardProps> = (props) => {
             </table>
         </AdminPageLayout>
     );
-};
-
-export const getServerSideProps = async () => {
-    const data = await controller.getAllPosts(0, 10);
-    return {
-        props: {
-            data,
-        },
-    };
 };
 
 export default PostDashboard;

@@ -1,5 +1,5 @@
 export default interface UserData {
-    _id: string | number;
+    _id: number;
     name: string;
     avatar?: string;
     username: string;

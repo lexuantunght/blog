@@ -8,7 +8,7 @@ class PostController extends BaseController {
         super();
     }
 
-    public getPost(postId: string | number) {
+    public getPost(postId: number) {
         return this.postUC.getPost(postId);
     }
 
@@ -22,6 +22,14 @@ class PostController extends BaseController {
 
     public createPost(post: FormData) {
         return this.postUC.createPost(post);
+    }
+
+    public getRecentPosts() {
+        return this.postUC.getRecentPosts();
+    }
+
+    public getMostViewsPosts() {
+        return this.postUC.getMostViews();
     }
 }
 

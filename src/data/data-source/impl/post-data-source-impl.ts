@@ -11,10 +11,10 @@ class PostDataSourceImpl implements PostDataSource {
 
     public async getAll(page = 0, limit = 8, params = {}) {
         const response = await this.httpClient.get(
-            `/post/getAll/${limit}/${page}${objectToQuery(params)}`
+            `/post/all?limit=${limit}&page=${page}&${objectToQuery(params)}`
         );
-        const { data } = response.data;
-        return { posts: data.posts, pageCount: data.totalPages };
+        const { data, count } = response.data;
+        return { posts: data, count };
     }
 
     public async getRecent(page = 0, limit = 8) {
@@ -33,20 +33,20 @@ class PostDataSourceImpl implements PostDataSource {
         return data;
     }
 
-    public async get(id: string | number) {
-        const response = await this.httpClient.get(`/post/get/${id}`);
+    public async get(id: number) {
+        const response = await this.httpClient.get(`/post/get?id=${id}`);
         const { data } = response.data;
         return data;
     }
 
     public async getCategories() {
-        const response = await this.httpClient.get('/admin/category/getAll');
+        const response = await this.httpClient.get('/category/all');
         const { data } = response.data;
         return data;
     }
 
     public async create(data: FormData) {
-        await this.httpClient.post('/admin/post/create', data);
+        await this.httpClient.post('/post/create', data);
     }
 }
 

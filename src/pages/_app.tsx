@@ -12,9 +12,7 @@ function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
 
     const handleStart = (url: string) => {
-        url !== router.pathname && !router.pathname.startsWith('/admin')
-            ? setLoading(true)
-            : setLoading(false);
+        url !== router.pathname ? setLoading(true) : setLoading(false);
     };
     const handleComplete = () => setLoading(false);
 
@@ -30,7 +28,7 @@ function App({ Component, pageProps }: AppProps) {
     }, []);
 
     if (loading) {
-        return <LoadingView className="app-loading-view" />;
+        return <LoadingView className="h-screen" />;
     }
 
     return <Component {...pageProps} />;

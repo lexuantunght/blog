@@ -1,9 +1,9 @@
 import type { NextPage, GetServerSideProps } from 'next';
 import toNormalizePath from 'common/helper/to-normalize-path';
 import ModuleContainer from 'common/shared/module-container';
-import PostController from 'controller/post/post-controller';
+import PostController from 'controller/post-controller';
 
-const controller = ModuleContainer.resolve(PostController);
+const postController = ModuleContainer.resolve(PostController);
 
 const PostList: NextPage = () => {
     return <></>;
@@ -16,7 +16,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             notFound: true,
         };
     }
-    const categories = await controller.getCategories();
+    const categories = await postController.getCategories();
     const _category = categories.find((cate) => toNormalizePath(cate.name) === category);
     if (!_category) {
         return {

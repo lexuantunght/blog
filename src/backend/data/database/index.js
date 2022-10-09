@@ -3,6 +3,7 @@ const Counter = require('backend/data/model/_counter');
 const Role = require('backend/data/model/role');
 const User = require('backend/data/model/user');
 const Post = require('backend/data/model/post');
+const Category = require('backend/data/model/category');
 
 mongoose.Promise = global.Promise;
 
@@ -32,6 +33,7 @@ const DB = {
     Role,
     User,
     Post,
+    Category,
 };
 
 module.exports = DB;

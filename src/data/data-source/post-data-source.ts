@@ -6,10 +6,10 @@ export default interface PostDataSource {
         page?: number,
         limit?: number,
         params?: Record<string, string>
-    ) => Promise<{ posts: Array<PostAPIEntity>; pageCount: number }>;
+    ) => Promise<{ posts: Array<PostAPIEntity>; count: number }>;
     getRecent: (page?: number, limit?: number) => Promise<Array<PostAPIEntity>>;
     getMostViews: (page?: number, limit?: number) => Promise<Array<PostAPIEntity>>;
-    get: (id: string | number) => Promise<PostAPIEntity>;
+    get: (id: number) => Promise<PostAPIEntity>;
     getCategories: () => Promise<Array<CategoryAPIEntity>>;
     create: (data: FormData) => Promise<void>;
 }

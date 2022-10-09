@@ -9,7 +9,7 @@ import LoadingView from 'common/widget/loading-view';
 import Modal from 'common/ui/Modal';
 import Button from 'common/ui/Button';
 import ModuleContainer from 'common/shared/module-container';
-import AuthController from 'controller/authentication/auth-controller';
+import AuthController from 'controller/auth-controller';
 import useSelector from 'utils/redux/use-selector';
 
 type AdminPageWrapperProps = {
@@ -23,18 +23,18 @@ type AdminPageLayoutProps = {
     className?: string;
 };
 
-const controller = ModuleContainer.resolve(AuthController);
+const authController = ModuleContainer.resolve(AuthController);
 
 const AdminPageWrapper = ({ children, router, className }: AdminPageWrapperProps) => {
     const [loading, setLoading] = React.useState(true);
-    const userData = useSelector(controller.createSelector((state) => state.app.userData));
+    const userData = useSelector(authController.createSelector((state) => state.app.userData));
 
     React.useEffect(() => {
-        controller
+        authController
             .authorize()
             .then((data) => {
                 if (data) {
-                    controller.setUserData(data);
+                    authController.setUserData(data);
                 }
             })
             .then(() => setLoading(false));
@@ -45,7 +45,7 @@ const AdminPageWrapper = ({ children, router, className }: AdminPageWrapperProps
             router.push('/admin/login');
             return null;
         }
-        return <LoadingView className="main-loading-view" />;
+        return <LoadingView className="h-screen" />;
     }
 
     return <div className={className}>{children}</div>;
@@ -53,7 +53,7 @@ const AdminPageWrapper = ({ children, router, className }: AdminPageWrapperProps
 
 const AdminPageLayout = ({ children, className }: AdminPageLayoutProps) => {
     const router = useRouter();
-    const userData = useSelector(controller.createSelector((state) => state.app.userData));
+    const userData = useSelector(authController.createSelector((state) => state.app.userData));
     const [showLogout, setShowLogout] = React.useState(false);
 
     const coreItems = [
@@ -75,7 +75,7 @@ const AdminPageLayout = ({ children, className }: AdminPageLayoutProps) => {
     const logoutForm = useFormik({
         initialValues: {},
         onSubmit: async () => {
-            await controller.logout();
+            await authController.logout();
             router.replace('/admin/login');
         },
     });

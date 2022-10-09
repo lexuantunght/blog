@@ -11,7 +11,7 @@ import TextEditor from 'common/ui/TextEditor';
 import Button from 'common/ui/Button';
 import Loader from 'common/ui/Loader';
 import ModuleContainer from 'common/shared/module-container';
-import PostController from 'controller/post/post-controller';
+import PostController from 'controller/post-controller';
 import AppConfig from 'config/app';
 import Category from 'domain/model/category';
 import { ImageFile } from 'common/model';
@@ -20,7 +20,7 @@ type CreatePostProps = {
     categories: Array<Category>;
 };
 
-const controller = ModuleContainer.resolve(PostController);
+const postController = ModuleContainer.resolve(PostController);
 
 const CreatePost: NextPage<CreatePostProps> = (props) => {
     const { categories } = props;
@@ -46,7 +46,7 @@ const CreatePost: NextPage<CreatePostProps> = (props) => {
             values.photos.forEach((photo: ImageFile) => {
                 post.append('image', photo.file, photo.name);
             });
-            await controller.createPost(post);
+            await postController.createPost(post);
             router.push('/admin/post');
         },
     });
@@ -125,7 +125,7 @@ const CreatePost: NextPage<CreatePostProps> = (props) => {
 };
 
 export const getServerSideProps = async () => {
-    const data = await controller.getCategories();
+    const data = await postController.getCategories();
     return {
         props: {
             categories: data,

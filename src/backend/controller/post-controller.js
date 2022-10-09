@@ -11,14 +11,15 @@ class PostController {
 
     async createPost(req, res) {
         const photosData = [];
-        if (req.files.length) {
-            for (const file of req.files) {
-                photosData.push(await cloud.uploads(file.path, '/Images'));
-                fs.unlinkSync(file.path);
+        if (req.files?.image) {
+            const files = Array.isArray(req.files.image) ? req.files.image : [req.files.image];
+            for (const file of files) {
+                photosData.push(await cloud.uploads(file, '/Images'));
+                fs.unlinkSync(file.filepath);
             }
         }
         const post = new Post({
-            _id: getNextId('posts'),
+            _id: await getNextId('posts'),
             title: req.body.title,
             author: '',
             photos: photosData,
@@ -31,12 +32,29 @@ class PostController {
         return res.send({ status: 'success', message: 'Create post successfully', data });
     }
 
+    async getPostById(req, res) {
+        if (!req.query.id) {
+            return res.status(400).send({ status: 'fail', message: 'Bad request' });
+        }
+        const post = await this.postRepo.getById(req.query.id);
+        if (!post) {
+            return res
+                .status(404)
+                .send({ status: 'fail', message: 'Not found post with id: ' + req.query.id });
+        }
+        if (!req.role) {
+            post.views = post.views + 1;
+            await post.save();
+        }
+        return res.send({ status: 'success', data: post });
+    }
+
     async getAllPosts(req, res) {
         const limit = parseInt(req.query.limit);
         const page = parseInt(req.query.page);
-        const query = { mode: 'Public' };
-        const posts = await this.postRepo.getAll(page, limit, query);
-        return res.send({ status: 'success', data: posts });
+        const posts = await this.postRepo.getAll(page, limit);
+        const count = await this.postRepo.countPosts();
+        return res.send({ status: 'success', data: posts, count });
     }
 
     async getLatestPosts(req, res) {
