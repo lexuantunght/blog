@@ -21,7 +21,7 @@ class PostController {
         const post = new Post({
             _id: await getNextId('posts'),
             title: req.body.title,
-            author: '',
+            author: req.user?.name,
             photos: photosData,
             category: req.body.category,
             content: req.body.content,
@@ -42,7 +42,7 @@ class PostController {
                 .status(404)
                 .send({ status: 'fail', message: 'Not found post with id: ' + req.query.id });
         }
-        if (!req.role) {
+        if (!(req.user?.role === 'admin')) {
             post.views = post.views + 1;
             await post.save();
         }

@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { IoCheckmark } from 'react-icons/io5';
@@ -7,7 +8,6 @@ import AdminPageLayout from 'common/admin-layout';
 import TextInput from 'common/ui/TextInput';
 import Dropdown from 'common/ui/Dropdown';
 import ImageUploader from 'common/ui/ImageUploader';
-import TextEditor from 'common/ui/TextEditor';
 import Button from 'common/ui/Button';
 import Loader from 'common/ui/Loader';
 import ModuleContainer from 'common/shared/module-container';
@@ -15,6 +15,8 @@ import PostController from 'controller/post-controller';
 import AppConfig from 'config/app';
 import Category from 'domain/model/category';
 import { ImageFile } from 'common/model';
+
+const TextEditor = dynamic(() => import('common/ui/TextEditor'), { ssr: false });
 
 type CreatePostProps = {
     categories: Array<Category>;

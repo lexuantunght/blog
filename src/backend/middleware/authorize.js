@@ -48,7 +48,11 @@ class Authorize {
                     const role = await this.roleRepo.getRole(uid);
                     if (role.name === _role) {
                         req.userId = uid;
-                        req.role = role.name;
+                        const user = await this.userRepo.getOne({ _id: uid });
+                        req.user = {
+                            name: user.name,
+                            role: role.name,
+                        };
                         resolve(uid);
                     } else {
                         reject({ errorCode: 403, message: 'Not allow' });
