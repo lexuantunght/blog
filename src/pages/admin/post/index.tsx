@@ -50,7 +50,7 @@ const PostDashboard: NextPage = () => {
                             <td>{post.title}</td>
                             <td>{post.category}</td>
                             <td>{post.mode}</td>
-                            <td>{moment(post.created_at).format('DD/MM/yyyy')}</td>
+                            <td>{moment(post.createdAt).format('DD/MM/yyyy')}</td>
                             <td>{post.views}</td>
                             <td>
                                 <div className="flex">
