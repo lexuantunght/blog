@@ -13,20 +13,16 @@ const HeaderConfig = {
                     path: '/web-development',
                 },
                 {
-                    label: 'Life stories',
-                    path: '/life-stories',
+                    label: 'For life',
+                    path: '/for-life',
                 },
                 {
-                    label: 'Work',
-                    path: 'work',
+                    label: 'For work',
+                    path: '/for-work',
                 },
                 {
-                    label: 'Study & UIT',
-                    path: '/study-uit',
-                },
-                {
-                    label: 'Other',
-                    path: '/other',
+                    label: 'Just for fun',
+                    path: '/just-for-fun',
                 },
             ],
         },

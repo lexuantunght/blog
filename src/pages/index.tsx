@@ -91,7 +91,7 @@ const Home: NextPage<HomeProps> = (props) => {
                                 title={post.title}
                                 category={post.category}
                                 views={post.views}
-                                created_at={post.created_at}
+                                createdAt={post.createdAt}
                                 onClick={() => onClickPostItem(post)}
                             />
                         ))}
@@ -105,7 +105,7 @@ const Home: NextPage<HomeProps> = (props) => {
                                 title={post.title}
                                 category={post.category}
                                 views={post.views}
-                                created_at={post.created_at}
+                                createdAt={post.createdAt}
                                 onClick={() => onClickPostItem(post)}
                             />
                         ))}

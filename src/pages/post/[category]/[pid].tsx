@@ -32,7 +32,7 @@ const PostList: NextPage<PostListProps> = (props) => {
                             <div className="detail-post-title">{post.title}</div>
                             <div>
                                 <IoCalendar size={20} />
-                                <span>{moment(post.created_at).format('HH:mm - DD/MM/yyyy')}</span>
+                                <span>{moment(post.createdAt).format('HH:mm - DD/MM/yyyy')}</span>
                             </div>
                             <div>
                                 <IoPricetag size={20} />

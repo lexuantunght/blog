@@ -8,6 +8,6 @@ export default interface PostAPIEntity {
     content: string;
     views: number;
     mode?: Mode;
-    created_at: Date;
+    createdAt: Date;
     category: string;
 }

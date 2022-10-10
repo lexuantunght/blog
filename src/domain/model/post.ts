@@ -6,6 +6,6 @@ export default interface Post {
     content: string;
     views: number;
     mode?: string;
-    created_at: Date;
+    createdAt: Date;
     category: string;
 }

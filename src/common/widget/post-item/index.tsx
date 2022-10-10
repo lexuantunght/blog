@@ -8,13 +8,13 @@ type PostItemProps = {
     title?: string;
     description?: string;
     views: number;
-    created_at: Date;
+    createdAt: Date;
     category: string;
     onClick?: () => void;
 };
 
 const PostItem = (props: PostItemProps) => {
-    const { imageURL, title, views, created_at, category, onClick } = props;
+    const { imageURL, title, views, createdAt, category, onClick } = props;
     return (
         <div className={styles.container} onClick={onClick}>
             {imageURL && <img src={imageURL} className={styles.thumb} alt="thumb" />}
@@ -25,7 +25,7 @@ const PostItem = (props: PostItemProps) => {
                         <IoEye />
                         <span className={styles.view}>{views}</span>
                     </span>
-                    <span>{moment(created_at).fromNow(true)}</span>
+                    <span>{moment(createdAt).fromNow(true)}</span>
                 </div>
                 <div>
                     <span>
