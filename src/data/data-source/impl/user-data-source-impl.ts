@@ -13,6 +13,18 @@ class UserDataSourceImpl implements UserDataSource {
         const { message } = response.data;
         return message;
     }
+
+    public async getAbout() {
+        const response = await this.httpClient.get('/user/about');
+        const { data } = response.data;
+        return data;
+    }
+
+    public async createAbout(data: Record<string, string>) {
+        const response = await this.httpClient.post('/user/about', data);
+        const { message } = response.data;
+        return message;
+    }
 }
 
 export default UserDataSourceImpl;

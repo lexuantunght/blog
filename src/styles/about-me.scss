@@ -1,0 +1,16 @@
+.about-me-title {
+    margin: 1.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--black-text);
+    user-select: none;
+}
+
+.about-me-visit {
+    width: 16rem;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    button {
+        width: fit-content;
+    }
+}

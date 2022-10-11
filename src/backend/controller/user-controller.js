@@ -147,6 +147,15 @@ class UserController {
         return res.send({ status: 'success', message: 'Change info successfully' });
     }
 
+    async getAboutMe(req, res) {
+        const data = await this.userRepo.getAbout(1);
+        return res.send({
+            status: 'success',
+            data,
+            message: 'Create about introduction successfully!',
+        });
+    }
+
     async subscribe(req, res) {
         if (await this.userRepo.checkSubscribed(req.body.email)) {
             return res.status(201).send({

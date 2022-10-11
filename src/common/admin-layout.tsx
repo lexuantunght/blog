@@ -11,6 +11,7 @@ import Button from 'common/ui/Button';
 import ModuleContainer from 'common/shared/module-container';
 import AuthController from 'controller/auth-controller';
 import useSelector from 'utils/redux/use-selector';
+import ToastView from 'common/widget/toast-view';
 
 type AdminPageWrapperProps = {
     children: React.ReactNode;
@@ -60,6 +61,7 @@ const AdminPageLayout = ({ children, className }: AdminPageLayoutProps) => {
         {
             label: 'Update profile',
             icon: <FaUserEdit size={20} />,
+            path: '/admin/profile',
         },
         {
             label: 'Change password',
@@ -126,6 +128,7 @@ const AdminPageLayout = ({ children, className }: AdminPageLayoutProps) => {
                     </form>
                 </Modal>
             </main>
+            <ToastView />
         </>
     );
 };
