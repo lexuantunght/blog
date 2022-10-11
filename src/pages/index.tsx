@@ -118,7 +118,7 @@ const Home: NextPage<HomeProps> = (props) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
     const recentPosts = await postController.getRecentPosts();
-    const mostViewsPosts = await postController.getRecentPosts();
+    const mostViewsPosts = await postController.getMostViewsPosts();
     return {
         props: {
             recentPosts,

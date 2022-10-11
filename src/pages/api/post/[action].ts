@@ -30,11 +30,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             }
         case 'all':
             if (req.method === 'GET') {
-                return Authorize.verifyRole('admin')(req, res)
-                    .then(() => PostController.getAllPosts(req, res))
-                    .catch(({ errorCode, message }) =>
-                        res.status(errorCode).json({ status: 'fail', message })
-                    );
+                return PostController.getAllPosts(req, res);
             }
         case 'get':
             if (req.method === 'GET') {

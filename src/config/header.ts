@@ -10,19 +10,19 @@ const HeaderConfig = {
             items: [
                 {
                     label: 'Web development',
-                    path: '/web-development',
+                    path: '/post/web-development',
                 },
                 {
                     label: 'For life',
-                    path: '/for-life',
+                    path: '/post/for-life',
                 },
                 {
                     label: 'For work',
-                    path: '/for-work',
+                    path: '/post/for-work',
                 },
                 {
                     label: 'Just for fun',
-                    path: '/just-for-fun',
+                    path: '/post/just-for-fun',
                 },
             ],
         },

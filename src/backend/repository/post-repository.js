@@ -3,6 +3,7 @@ const DB = require('backend/data/database');
 class PostRepository {
     async getAll(page = 0, limit = 5, query = {}, projection = { content: 0 }) {
         const posts = await DB.Post.find(query, projection)
+            .sort({ createdAt: -1 })
             .skip(page * limit)
             .limit(limit);
         return posts;

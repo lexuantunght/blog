@@ -10,7 +10,7 @@ const defaultAppState: AppState = {
 };
 
 const appSlice = createSlice({
-    name: 'chat',
+    name: 'app',
     initialState: defaultAppState,
     reducers: {
         setUserData: (state: AppState, action: PayloadAction<UserData | undefined>) => {
@@ -19,8 +19,8 @@ const appSlice = createSlice({
     },
 });
 
-const appReducer = appSlice.reducer;
+const AppReducer = appSlice.reducer;
 
 export const { setUserData } = appSlice.actions;
 
-export default appReducer;
+export default AppReducer;
