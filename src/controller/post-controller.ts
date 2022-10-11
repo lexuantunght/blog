@@ -16,6 +16,10 @@ class PostController extends BaseController {
         return this.postUC.getAllPosts(page, limit);
     }
 
+    public getPostsByCategory(page?: number, limit?: number, category?: string) {
+        return this.postUC.getPostsByCategory(page, limit, category);
+    }
+
     public getCategories() {
         return this.postUC.getCategories();
     }

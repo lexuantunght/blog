@@ -17,6 +17,10 @@ class UserRepository {
         const user = await DB.User.findOne({ ...data });
         return user;
     }
+    async checkSubscribed(email) {
+        const subscribe = await DB.Subscribe.findOne({ email: email });
+        return !!subscribe;
+    }
 }
 
 module.exports = UserRepository;

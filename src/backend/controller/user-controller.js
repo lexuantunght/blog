@@ -1,4 +1,5 @@
 const User = require('backend/data/model/user');
+const Subscribe = require('backend/data/model/subscribe');
 const UserRepository = require('backend/repository/user-repository');
 const RoleRepository = require('backend/repository/role-repository');
 const fs = require('fs');
@@ -153,6 +154,23 @@ class UserController {
             data,
             message: 'Create about introduction successfully!',
         });
+    }
+
+    async subscribe(req, res) {
+        if (await this.userRepo.checkSubscribed(req.body.email)) {
+            return res.status(201).send({
+                status: 'success',
+                message: 'You have already subscribed!',
+            });
+        }
+        const subscribe = new Subscribe({
+            _id: await getNextId('subscribes'),
+            email: req.body.email,
+        });
+        await subscribe.save();
+        return res
+            .status(200)
+            .send({ status: 'success', message: 'You have subcribed my blog successfully!' });
     }
 }
 

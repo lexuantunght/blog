@@ -59,6 +59,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             if (req.method === 'GET') {
                 return UserController.logout(req, res);
             }
+        case 'subscribe':
+            if (req.method === 'POST') {
+                return UserController.subscribe(req, res);
+            }
         default:
             return res.status(404).json({ status: 'fail', message: 'Not found' });
     }

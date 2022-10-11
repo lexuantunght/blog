@@ -5,6 +5,7 @@ const User = require('backend/data/model/user');
 const Post = require('backend/data/model/post');
 const Category = require('backend/data/model/category');
 const About = require('backend/data/model/about');
+const Subscribe = require('backend/data/model/subscribe');
 
 mongoose.Promise = global.Promise;
 
@@ -36,6 +37,7 @@ const DB = {
     Post,
     Category,
     About,
+    Subscribe,
 };
 
 module.exports = DB;

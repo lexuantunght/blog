@@ -52,8 +52,12 @@ class PostController {
     async getAllPosts(req, res) {
         const limit = parseInt(req.query.limit);
         const page = parseInt(req.query.page);
-        const posts = await this.postRepo.getAll(page, limit);
-        const count = await this.postRepo.countPosts();
+        const query = req.user?.role === 'admin' ? {} : { mode: 'Public' };
+        if (req.query.category) {
+            query.category = req.query.category;
+        }
+        const posts = await this.postRepo.getAll(page, limit, query);
+        const count = await this.postRepo.countPosts(query);
         return res.send({ status: 'success', data: posts, count });
     }
 

@@ -1,8 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import appReducer from './app-reducer';
+import AppReducer from 'utils/redux/reducer/app-reducer';
+import PostListReducer from 'utils/redux/reducer/post-list-reducer';
 
 const reducer = combineReducers({
-    app: appReducer,
+    app: AppReducer,
+    postList: PostListReducer,
 });
 
 export default reducer;

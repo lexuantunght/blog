@@ -1,5 +1,5 @@
 import React from 'react';
-import store, { observeStore, RootState } from './store';
+import store, { observeStore, RootState } from 'utils/redux/store';
 
 const useSelector = <S>(selector: (state: RootState) => S) => {
     const [state, setState] = React.useState<S>(selector(store.getState()));

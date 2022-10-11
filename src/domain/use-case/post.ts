@@ -7,15 +7,19 @@ class PostUseCase {
     constructor(@ModuleContainer.inject(PostRepositoryName) private repository: PostRepository) {}
 
     public getRecentPosts() {
-        return this.repository.getRecent(0, 8);
+        return this.repository.getRecent(0, 12);
     }
 
     public getMostViews() {
-        return this.repository.getMostViews(0, 8);
+        return this.repository.getMostViews(0, 12);
     }
 
     public getAllPosts(page?: number, limit?: number) {
         return this.repository.getAll(page, limit);
+    }
+
+    public getPostsByCategory(page?: number, limit?: number, category?: string) {
+        return this.repository.getAll(page, limit, { category: category || '' });
     }
 
     public getPost(postId: number) {
