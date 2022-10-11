@@ -15,6 +15,10 @@ class UserController extends BaseController {
     public getAboutMe() {
         return this.userUC.getAboutMe();
     }
+
+    public createAboutMe(introduction: string, cv: string) {
+        return this.userUC.createAboutMe(introduction, cv);
+    }
 }
 
 export default UserController;

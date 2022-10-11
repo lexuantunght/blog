@@ -24,6 +24,10 @@ class UserUseCase {
         return this.repository.getAbout();
     }
 
+    public async createAboutMe(introduction: string, cv: string) {
+        return this.repository.createAbout({ introduction, cv });
+    }
+
     public getEventType() {
         return this.UserEventType;
     }

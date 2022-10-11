@@ -148,7 +148,11 @@ class UserController {
 
     async getAboutMe(req, res) {
         const data = await this.userRepo.getAbout(1);
-        return res.send({ status: 'success', data: { cv: '321', introduction: '123' } });
+        return res.send({
+            status: 'success',
+            data,
+            message: 'Create about introduction successfully!',
+        });
     }
 }
 

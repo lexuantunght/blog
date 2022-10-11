@@ -17,6 +17,10 @@ class UserRepositoryImpl implements UserRepository {
     public async getAbout() {
         return this.dataSource.getAbout();
     }
+
+    public async createAbout(data: Record<string, string>) {
+        return this.dataSource.createAbout(data);
+    }
 }
 
 export default UserRepositoryImpl;
