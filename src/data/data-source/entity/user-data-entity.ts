@@ -4,5 +4,4 @@ export default interface UserDataAPIEntity {
     avatar?: string;
     username: string;
     email: string;
-    cv?: string;
 }

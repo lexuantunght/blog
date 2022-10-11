@@ -145,6 +145,11 @@ class UserController {
         await user.save();
         return res.send({ status: 'success', message: 'Change info successfully' });
     }
+
+    async getAboutMe(req, res) {
+        const data = await this.userRepo.getAbout(1);
+        return res.send({ status: 'success', data: { cv: '321', introduction: '123' } });
+    }
 }
 
 module.exports = new UserController();

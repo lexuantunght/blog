@@ -11,6 +11,10 @@ class UserController extends BaseController {
     public subscribeBlog(email: string) {
         return this.userUC.subscribe(email);
     }
+
+    public getAboutMe() {
+        return this.userUC.getAboutMe();
+    }
 }
 
 export default UserController;

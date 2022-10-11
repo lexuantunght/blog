@@ -13,6 +13,10 @@ class UserRepositoryImpl implements UserRepository {
     public subscribe(email: string) {
         return this.dataSource.subscribe(email);
     }
+
+    public async getAbout() {
+        return this.dataSource.getAbout();
+    }
 }
 
 export default UserRepositoryImpl;

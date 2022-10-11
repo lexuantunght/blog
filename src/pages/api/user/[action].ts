@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import UserController from 'backend/controller/user-controller';
+import AdminController from 'backend/controller/admin-controller';
 import Authorize from 'backend/middleware/authorize';
 import upload from 'backend/utils/upload';
 
@@ -39,6 +40,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             if (req.method === 'PUT') {
                 return Authorize.verifyToken(req, res)
                     .then(() => UserController.updatePassword(req, res))
+                    .catch(({ errorCode, message }) =>
+                        res.status(errorCode).json({ status: 'fail', message })
+                    );
+            }
+        case 'about':
+            if (req.method === 'GET') {
+                return UserController.getAboutMe(req, res);
+            }
+            if (req.method === 'POST') {
+                return Authorize.verifyRole('admin')(req, res)
+                    .then(() => AdminController.createAbout(req, res))
                     .catch(({ errorCode, message }) =>
                         res.status(errorCode).json({ status: 'fail', message })
                     );

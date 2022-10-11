@@ -60,6 +60,7 @@ const AdminPageLayout = ({ children, className }: AdminPageLayoutProps) => {
         {
             label: 'Update profile',
             icon: <FaUserEdit size={20} />,
+            path: '/admin/profile',
         },
         {
             label: 'Change password',

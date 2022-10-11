@@ -20,6 +20,10 @@ class UserUseCase {
         });
     }
 
+    public async getAboutMe() {
+        return this.repository.getAbout();
+    }
+
     public getEventType() {
         return this.UserEventType;
     }
