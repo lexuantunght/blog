@@ -5,6 +5,7 @@ const nextConfig = {
     devIndicators: {
         buildActivity: true,
     },
+    output: 'standalone',
 };
 
 module.exports = nextConfig;
